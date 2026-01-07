@@ -156,6 +156,7 @@ class AddressValidator:
                 {'$set': address_data},                # Update/insert data
                 upsert=True                            # Create if doesn't exist
             )
+            print(f"\n {address_data['address']} \n")
         except Exception as e:
             logger.error(f"Error saving address {address_data.get('osm_id', 'unknown')}: {e}")
             raise
@@ -202,7 +203,7 @@ class AddressValidator:
                 display_name = display_name.replace(char, ' ')
                 
             #for Aruba    
-            display_name = display_name.replace(', Netherlands', ' ')
+            # display_name = display_name.replace(', Netherlands', ' ')
             
             # Clean up multiple spaces
             display_name = ' '.join(display_name.split())
@@ -213,10 +214,6 @@ class AddressValidator:
             
             # Validate region - use country from Nominatim result
             nominatim_country = result.get('address', {}).get('country', country_name)
-            
-            #for Aruba
-            nominatim_country = "Aruba"
-            
             if not validate_address_region(display_name, nominatim_country):
                 continue
             
