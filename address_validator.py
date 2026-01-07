@@ -202,8 +202,8 @@ class AddressValidator:
             for char in special_chars:
                 display_name = display_name.replace(char, ' ')
                 
-            #for Aruba    
-            # display_name = display_name.replace(', Netherlands', ' ')
+            #for Aruba, Curacao
+            display_name = display_name.replace(', Netherlands', ' ')
             
             #for Cape Verde -> Cabo Verde
             # display_name = display_name.replace(', Cape Verde', ', Cabo Verde')
