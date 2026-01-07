@@ -374,7 +374,7 @@ def compute_bounding_box_areas_meters(nominatim_results):
 
 
 if __name__ == "__main__":
-    address = "V23, EN1-SL-01, Murdeira, Sal, 4110, Cabo Verde"
+    address = "38, Rua da Ilha do Fogo, Monte Vermelho, Palmarejo, Praia, 5298, Cabo Verde"
     # address = address.replace(', Netherlands', ' ')
     # print(address)
     seed = "Cabo Verde"
