@@ -204,6 +204,7 @@ class AddressValidator:
                 
             #for Aruba, Curacao
             display_name = display_name.replace(', Netherlands', ' ')
+            display_name = display_name.replace(', 0000 NA', ' ')
             
             #for Cape Verde -> Cabo Verde
             # display_name = display_name.replace(', Cape Verde', ', Cabo Verde')
