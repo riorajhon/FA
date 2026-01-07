@@ -240,7 +240,7 @@ class AddressValidator:
             address_data = {
                 'osm_id': osm_id,
                 # 'country': components['country'],
-                'country': 'Cabo Verde'
+                'country': "Cabo Verde",
                 'city': components['city'],
                 'street': components['street'],
                 'score': score,
