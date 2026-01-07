@@ -214,12 +214,14 @@ class AddressValidator:
             
             # Validate address format
             if not looks_like_address(display_name):
+                print("\n looks")
                 continue
             
             # Validate region - use country from Nominatim result
             nominatim_country = result.get('address', {}).get('country', country_name)
             # nominatim_country = "Cabo Verde"
             if not validate_address_region(display_name, nominatim_country):
+                print("\n region")
                 continue
             
             # Check place_rank - only save if > 20
@@ -235,6 +237,7 @@ class AddressValidator:
             score = self.calculate_score(bbox) if len(bbox) == 4 else 0.3
             
             if score < 0.9:
+                print("\n score")
                 continue
             
             # Save address
