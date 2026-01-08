@@ -231,7 +231,7 @@ class AddressValidator:
             # nominatim_country = "Palestinian Territory"
             nominatim_country = "The Netherlands"
             if not validate_address_region(display_name, nominatim_country):
-                print("\n region")
+                print(f"\n region {display_name} {nominatim_country}")
                 continue
             
             # Check place_rank - only save if > 20
