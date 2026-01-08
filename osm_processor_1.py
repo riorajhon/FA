@@ -46,8 +46,13 @@ class OSMAddressProcessor(osmium.SimpleHandler):
             return
         if 'building' not in w.tags:
             return
-        if 'addr:street' not in w.tags:
+        # if 'addr:street' not in w.tags:
+        #     return
+        
+        # Filter out ways with bbox < 1000 m²
+        if not self._filter_way_bbox(w):
             return
+            
         self._add_address(f'W{w.id}')
         self._update_progress()
             
@@ -71,6 +76,61 @@ class OSMAddressProcessor(osmium.SimpleHandler):
                     print(f"\rProgress: {estimated_progress:.1f}% | File: {processed_mb:.1f}MB/{file_size_mb:.1f}MB | Addresses: {self.processed:,} | Batches: {self.saved_batches:,}", end='', flush=True)
             
             self.last_progress_report = current_time
+    
+    def _filter_way_bbox(self, way, max_area_m2=1000):
+        """
+        Filter OSM way based on its bounding box area - must have bbox and be < max_area_m2
+        
+        Args:
+            way: OSM way object
+            max_area_m2: Maximum area in square meters (default: 1000)
+            
+        Returns:
+            bool: True if way has valid bbox and area < max_area_m2, False otherwise
+        """
+        try:
+            import math
+            
+            # Get way nodes to calculate bounding box
+            if not way.nodes:
+                return False  # Must have nodes
+                
+            # Extract coordinates from way nodes
+            lons = [node.lon for node in way.nodes]
+            lats = [node.lat for node in way.nodes]
+            
+            if not lons or not lats:
+                return False  # Must have valid coordinates
+            print("____________")
+            # Create bounding box
+            min_lon, min_lat = min(lons), min(lats)
+            max_lon, max_lat = max(lons), max(lats)
+            
+            # Must have a valid bounding box (not a single point)
+            if min_lon == max_lon and min_lat == max_lat:
+                return False
+            
+            # Calculate approximate area using coordinate differences
+            # 1 degree latitude ≈ 111,320 meters
+            # 1 degree longitude ≈ 111,320 * cos(latitude) meters
+            
+            # Average latitude for longitude calculation
+            avg_lat = (min_lat + max_lat) / 2
+            lat_rad = math.radians(avg_lat)
+            
+            # Calculate dimensions in meters
+            lat_diff_m = abs(max_lat - min_lat) * 111320  # meters per degree latitude
+            lon_diff_m = abs(max_lon - min_lon) * 111320 * math.cos(lat_rad)  # adjusted for latitude
+            
+            # Calculate area in square meters
+            area_m2 = lat_diff_m * lon_diff_m
+            
+            # Return True only if area is LESS than max_area_m2
+            return area_m2 < max_area_m2
+            
+        except Exception:
+            # If any error occurs, exclude the way (strict approach)
+            return False
     
     def _add_address(self, element_id):
         self.batch.append(element_id)

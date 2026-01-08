@@ -156,7 +156,7 @@ class AddressValidator:
                 {'$set': address_data},                # Update/insert data
                 upsert=True                            # Create if doesn't exist
             )
-            # print(f"\n{address_data['address']}")
+            print(f"\n{address_data['address']}")
         except Exception as e:
             logger.error(f"Error saving address {address_data.get('osm_id', 'unknown')}: {e}")
             raise
