@@ -335,6 +335,7 @@ def validate_address_region(generated_address: str, seed_address: str) -> bool:
     
     # Extract city and country from both addresses
     gen_city, gen_country = extract_city_country(generated_address, two_parts=(',' in seed_address))
+    print(gen_city, gen_country)
     seed_address_lower = seed_address.lower()
     seed_address_mapped = COUNTRY_MAPPING.get(seed_address.lower(), seed_address.lower())
 
@@ -377,7 +378,7 @@ def compute_bounding_box_areas_meters(nominatim_results):
 
 
 if __name__ == "__main__":
-    address = "Albert Heijn, 31, Stationsstraat, Vught, North Brabant, Netherlands, 5261 VB, Netherlands"
+    address = "PLUS, 3, Havelterweg, Haakswold, Ruinerwold, De Wolden, Drenthe, Netherlands, 7961 BC, Netherlands"
     # address = address.replace(', Netherlands', ' ')
     # print(address)
     seed = "The Netherlands"
