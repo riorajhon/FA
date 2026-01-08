@@ -218,6 +218,10 @@ class AddressValidator:
             # for Netherlands
             # display_name = display_name.replace('Netherlands', 'Republic of the Congo')
             # Clean up multiple spaces
+            
+            #for timor
+            display_name = display_name.replace('East Timor', 'Timor Leste')
+            
             display_name = ' '.join(display_name.split())
             
             # Validate address format
@@ -229,7 +233,8 @@ class AddressValidator:
             nominatim_country = result.get('address', {}).get('country', country_name)
             # nominatim_country = "Cabo Verde"
             # nominatim_country = "Palestinian Territory"
-            nominatim_country = "The Netherlands"
+            # nominatim_country = "The Netherlands"
+            nominatim_country = "Timor Leste"
             if not validate_address_region(display_name, nominatim_country):
                 # print(f"\n region {display_name} {nominatim_country} \n")
                 continue

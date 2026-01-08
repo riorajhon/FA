@@ -374,10 +374,10 @@ def compute_bounding_box_areas_meters(nominatim_results):
 
 
 if __name__ == "__main__":
-    address = "PLUS, 3, Havelterweg, Haakswold, Ruinerwold, De Wolden, Drenthe, Netherlands, 7961 BC, Netherlands"
+    address = "antinio sampanio, 345, Estrada Suai - Maliana, Lesuboten, Maliana, Bobonaro, Timor Leste"
     # address = address.replace(', Netherlands', ' ')
     # print(address)
-    seed = "The Netherlands"
+    seed = "Timor Leste"
     # nominatim = [
     #      "13.8718477",
     #         "13.8719477",
