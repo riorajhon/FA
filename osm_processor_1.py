@@ -3,7 +3,7 @@
 OSM PBF Address Processor - Optimized Version
 Processes OSM PBF files to extract address data and store in MongoDB
 
-Requirements: pip install pymongo osmium
+Requirements: pip install pymongo osmium python-dotenv
 Usage: python osm_processor.py <osm_filename>
 """
 
@@ -15,6 +15,10 @@ from typing import Optional
 from pymongo import MongoClient, InsertOne
 import osmium
 import logging
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -44,14 +48,14 @@ class OSMAddressProcessor(osmium.SimpleHandler):
     def way(self, w):
         if 'addr:housenumber' in w.tags:
             return
-        if 'building' not in w.tags:
-            return
-        # if 'addr:street' not in w.tags:
+        # if 'building' not in w.tags:
         #     return
+        if 'addr:street' not in w.tags:
+            return
         
         # Filter out ways with bbox < 1000 m²
-        if not self._filter_way_bbox(w):
-            return
+        # if not self._filter_way_bbox(w):
+        #     return
             
         self._add_address(f'W{w.id}')
         self._update_progress()
@@ -240,12 +244,21 @@ def find_osm_file(filename):
     file_path = os.path.join('osm_data', filename)
     return file_path if os.path.exists(file_path) else None
 
-def try_mongodb_connection(mongodb_uri):
-    """Test MongoDB connection"""
+def try_mongodb_connection():
+    """Test MongoDB connection using environment variables"""
+    mongodb_uri = os.getenv('MONGODB_URI')
+    if not mongodb_uri:
+        logger.error("MONGODB_URI not found in environment variables")
+        return None, None
+        
     try:
         client = MongoClient(mongodb_uri, serverSelectionTimeoutMS=5000)
         client.admin.command('ping')
-        collection = client.osm_addresses.address_batches
+        
+        db_name = os.getenv('DB_NAME', 'osm_addresses')
+        collection_name = os.getenv('COLLECTION_ADDRESS_BATCHES', 'address_batches')
+        collection = client[db_name][collection_name]
+        
         # Test write permission
         test_doc = {'test': True}
         result = collection.insert_one(test_doc)
@@ -255,7 +268,7 @@ def try_mongodb_connection(mongodb_uri):
         logger.warning(f"MongoDB connection failed: {e}")
         return None, None
 
-def process_osm_file(filename, country_code, country_name, mongodb_uri="mongodb://admin:fjkfjrj!20020415@localhost:27017/?authSource=admin"):
+def process_osm_file(filename, country_code, country_name):
     """Process OSM file with simple progress tracking and fallback storage"""
     file_path = find_osm_file(filename)
     if not file_path:
@@ -266,7 +279,7 @@ def process_osm_file(filename, country_code, country_name, mongodb_uri="mongodb:
     file_size_formatted = format_file_size(file_size)
     
     # Try MongoDB connection
-    client, collection = try_mongodb_connection(mongodb_uri)
+    client, collection = try_mongodb_connection()
     use_file_storage = collection is None
     
     if use_file_storage:

@@ -203,11 +203,14 @@ class AddressValidator:
                 display_name = display_name.replace(char, ' ')
                 
             #for Aruba, Curacao
-            display_name = display_name.replace(', Netherlands', ' ')
-            display_name = display_name.replace(', 0000 NA', ' ')
+            # display_name = display_name.replace(', Netherlands', ' ')
+            # display_name = display_name.replace(', 0000 NA', ' ')
             
             #for Cape Verde -> Cabo Verde
             # display_name = display_name.replace(', Cape Verde', ', Cabo Verde')
+            
+            # for Palestinian Territories -> Palestinian Territory
+            display_name = display_name.replace('Palestinian Territories', 'Palestinian Territory')
             
             # Clean up multiple spaces
             display_name = ' '.join(display_name.split())
@@ -218,8 +221,9 @@ class AddressValidator:
                 continue
             
             # Validate region - use country from Nominatim result
-            nominatim_country = result.get('address', {}).get('country', country_name)
+            # nominatim_country = result.get('address', {}).get('country', country_name)
             # nominatim_country = "Cabo Verde"
+            nominatim_country = "Palestinian Territory"
             if not validate_address_region(display_name, nominatim_country):
                 # print("\n region")
                 continue
@@ -243,8 +247,8 @@ class AddressValidator:
             # Save address
             address_data = {
                 'osm_id': osm_id,
-                'country': components['country'],
-                # 'country': "Cabo Verde",
+                # 'country': components['country'],
+                'country': nominatim_country,
                 'city': components['city'],
                 'street': components['street'],
                 'score': score,
