@@ -335,19 +335,16 @@ def validate_address_region(generated_address: str, seed_address: str) -> bool:
     
     # Extract city and country from both addresses
     gen_city, gen_country = extract_city_country(generated_address, two_parts=(',' in seed_address))
-    print(gen_city, gen_country)
     seed_address_lower = seed_address.lower()
     seed_address_mapped = COUNTRY_MAPPING.get(seed_address.lower(), seed_address.lower())
 
     
     # If no city was extracted from generated address, it's an error
     if not gen_city:
-        print("city")
         return False
     
     # If no country was extracted from generated address, it's an error
     if not gen_country:
-        print("country")
         return False
     
     # Check if either city or country matches
@@ -357,7 +354,6 @@ def validate_address_region(generated_address: str, seed_address: str) -> bool:
 
     
     if not (city_match or country_match or mapped_match):
-        print("match")
         return False
     
     return True
