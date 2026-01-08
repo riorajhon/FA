@@ -210,8 +210,10 @@ class AddressValidator:
             # display_name = display_name.replace(', Cape Verde', ', Cabo Verde')
             
             # for Palestinian Territories -> Palestinian Territory
-            display_name = display_name.replace('Palestinian Territories', 'Palestinian Territory')
+            # display_name = display_name.replace('Palestinian Territories', 'Palestinian Territory')
             
+            # for congo
+            display_name = display_name.replace('Congo-Brazzaville', 'Republic of the Congo')
             # Clean up multiple spaces
             display_name = ' '.join(display_name.split())
             
@@ -223,7 +225,8 @@ class AddressValidator:
             # Validate region - use country from Nominatim result
             # nominatim_country = result.get('address', {}).get('country', country_name)
             # nominatim_country = "Cabo Verde"
-            nominatim_country = "Palestinian Territory"
+            # nominatim_country = "Palestinian Territory"
+            nominatim_country = "Republic of the Congo"
             if not validate_address_region(display_name, nominatim_country):
                 # print("\n region")
                 continue
