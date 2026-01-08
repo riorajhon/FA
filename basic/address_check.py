@@ -374,10 +374,10 @@ def compute_bounding_box_areas_meters(nominatim_results):
 
 
 if __name__ == "__main__":
-    address = "Patisserie Vienoiserie, Avenue Jacques Opangault, Lumumba, Pointe-Noire, Lumumba (arrondissement 1), Pointe-Noire (commune), Pointe-Noire (département), Republic of the Congo"
+    address = "JAverechts, 49, Lijsterstraat, Vogelenbuurt, Votulast, Noordoost, Utrecht, Netherlands, 3514 TB, Netherlands"
     # address = address.replace(', Netherlands', ' ')
     # print(address)
-    seed = "Republic of the Congo"
+    seed = "The Netherlands"
     # nominatim = [
     #      "13.8718477",
     #         "13.8719477",
