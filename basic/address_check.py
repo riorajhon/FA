@@ -374,10 +374,10 @@ def compute_bounding_box_areas_meters(nominatim_results):
 
 
 if __name__ == "__main__":
-    address = "Agence de voyage, Route Nationale 1, Chamlé شاملي, Grande Comore, Comoros"
+    address = "116, Rue Adjogon Koutouan, Anoumabo, Zone 4, Marcory, Abidjan, Côte d'Ivoire"
     # address = address.replace(', Netherlands', ' ')
     # print(address)
-    seed = "Comoros"
+    seed = "Côte d'Ivoire"
     # nominatim = [
     #      "13.8718477",
     #         "13.8719477",
