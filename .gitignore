@@ -2,3 +2,5 @@ osm_data
 .md
 .vscode
 __pycache__
+eh-latest.osm.pbf
+.env
