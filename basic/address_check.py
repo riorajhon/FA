@@ -374,7 +374,7 @@ def compute_bounding_box_areas_meters(nominatim_results):
 
 
 if __name__ == "__main__":
-    address = "JAverechts, 49, Lijsterstraat, Vogelenbuurt, Votulast, Noordoost, Utrecht, Netherlands, 3514 TB, Netherlands"
+    address = "Albert Heijn, 38, De Bus, Waalre, North Brabant, Netherlands, 5581 GP, Netherlands"
     # address = address.replace(', Netherlands', ' ')
     # print(address)
     seed = "The Netherlands"
