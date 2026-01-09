@@ -48,8 +48,8 @@ class OSMAddressProcessor(osmium.SimpleHandler):
     def way(self, w):
         if 'addr:housenumber' in w.tags:
             return
-        # if 'building' not in w.tags:
-        #     return
+        if 'building' not in w.tags:
+            return
         if 'addr:street' not in w.tags:
             return
         

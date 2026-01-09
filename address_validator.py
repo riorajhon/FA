@@ -307,7 +307,7 @@ class AddressValidator:
                 
             display_name = ' '.join(display_name.split())
             # Validate address format
-            
+            print(display_name)
             if not looks_like_address(display_name):
                 continue
         

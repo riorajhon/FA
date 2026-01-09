@@ -375,7 +375,7 @@ def compute_bounding_box_areas_meters(nominatim_results):
 
 
 if __name__ == "__main__":
-    address = "Maas, 273, Gunbaru Hingun, South Thiladhunmathi, 02140, Maldives"
+    address = "112, Lainoofaru Magu, Male Atoll, 08080, Maldives"
     # address = address.replace(', Netherlands', ' ')
     # print(address)
     seed = "Maldives"
