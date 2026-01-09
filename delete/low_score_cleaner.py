@@ -109,8 +109,8 @@ class LowScoreCleaner:
                     total_deleted += 1
                 
                 # Show progress immediately after each score check
-                batch_progress = (i / len(addresses)) * 100
-                print(f"\rProgress: {batch_progress:.1f}% | Deleted: {total_deleted} | Updated: {total_updated}", end='', flush=True)
+                total_processed += 1
+                print(f"\rProcessed: {total_processed} | Deleted: {total_deleted} | Updated: {total_updated}", end='', flush=True)
                 
                 time.sleep(1)  # API rate limiting
             
@@ -119,8 +119,6 @@ class LowScoreCleaner:
             
             # Update high score addresses
             self.update_high_score_addresses(categorized["to_update"])
-            
-            total_processed += len(addresses)
             
             if len(addresses) < self.batch_size:
                 break
