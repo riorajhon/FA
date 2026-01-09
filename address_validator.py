@@ -295,6 +295,8 @@ class AddressValidator:
                     display_name = display_name.replace('Congo-Brazzaville', 'Republic of the Congo')
                 case "Timor Leste":
                     display_name = display_name.replace('East Timor', 'Timor Leste')
+                case "Maldives":
+                    display_name = display_name.replace('é', 'e')
                 case _:
                     nominatim_country = nominatim_country
 

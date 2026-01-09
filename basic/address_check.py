@@ -375,10 +375,10 @@ def compute_bounding_box_areas_meters(nominatim_results):
 
 
 if __name__ == "__main__":
-    address = "Sa'ed Al Ansari Mosque, Al Barrawi, Beit Lahiya, North Gaza Governorate, Gaza Strip, 500, Palestinian Territory"
+    address = "Maas, 273, Gunbaru Hingun, South Thiladhunmathi, 02140, Maldives"
     # address = address.replace(', Netherlands', ' ')
     # print(address)
-    seed = "Palestinian Territory"
+    seed = "Maldives"
     # nominatim = [
     #      "13.8718477",
     #         "13.8719477",
