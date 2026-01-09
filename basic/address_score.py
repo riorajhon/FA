@@ -133,59 +133,28 @@ def check_with_nominatim(address: str) -> Union[float, str, dict]:
         # }
         return score
     except requests.exceptions.Timeout:
-        print(f"API timeout for address: {address}")
+        # print(f"API timeout for address: {address}")
         return 0.0 
     except requests.exceptions.RequestException as e:
-        print(f"Request exception for address '{address}': {type(e).__name__}: {str(e)}")
+        # print(f"Request exception for address '{address}': {type(e).__name__}: {str(e)}")
         return 0.0
     except ValueError as e:
         error_msg = str(e)
         if "codec" in error_msg.lower() and "encode" in error_msg.lower():
-            print(f"Encoding error for address '{address}' (treating as timeout): {error_msg}")
+            # print(f"Encoding error for address '{address}' (treating as timeout): {error_msg}")
             return 0.0 
         else:
-            print(f"ValueError (likely JSON parsing) for address '{address}': {error_msg}")
+            # print(f"ValueError (likely JSON parsing) for address '{address}': {error_msg}")
             return 0.0
     except Exception as e:
-        print(f"Unexpected exception for address '{address}': {type(e).__name__}: {str(e)}")
+        # print(f"Unexpected exception for address '{address}': {type(e).__name__}: {str(e)}")
         return 0.0
 
 
 
 if __name__ == "__main__":
-    address = "53, Gogolia Street, Sorokyne, Сорокинська міська громада, Довжанський район, Luhansk Oblast, 94405, Ukraine"
+    address = "136, 3rd Microrayan Road, Macroreyan 3, 9th District, Kabul, Kabul District, Kabul Province, 1002, Afghanistan"
     
     result = check_with_nominatim(address)
     
-    print("\nResult:")
-    print("-" * 60)
-    
-    if isinstance(result, dict):
-        print(f"Score: {result['score']}")
-        print(f"Number of results: {result['num_results']}")
-        print(f"Total area: {result.get('total_area', 'N/A')} m²")
-        
-        if 'areas' in result:
-            print("\nIndividual areas:")
-            for i, area in enumerate(result['areas'], 1):
-                print(f"  Result {i}: {area:.2f} m²")
-        
-        if 'areas_data' in result:
-            print("\nDetailed bounding boxes:")
-            for i, data in enumerate(result['areas_data'], 1):
-                print(f"  Result {i}:")
-                print(f"    Width: {data['width_m']:.2f} m")
-                print(f"    Height: {data['height_m']:.2f} m")
-                print(f"    Area: {data['area_m2']:.2f} m²")
-                if 'result' in data and 'display_name' in data['result']:
-                    print(f"    Name: {data['result']['display_name']}")
-    elif result == "TIMEOUT":
-        print("Result: TIMEOUT - The API request timed out")
-    elif result == "API_ERROR":
-        print("Result: API_ERROR - There was an error with the API request")
-    elif result == 0.0:
-        print("Result: 0.0 - Address not found or filtered out")
-    else:
-        print(f"Result: {result}")
-    
-    print("=" * 60)
+    print(result)
