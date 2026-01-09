@@ -283,7 +283,7 @@ class AddressValidator:
             # nominatim_country = result.get('address', {}).get('country', country_name)
             nominatim_country = country_name
             
-            match country_name.lower():
+            match country_name:
                 case "Aruba" | "Curacao":
                     display_name = display_name.replace(', Netherlands', ' ')
                     display_name = display_name.replace(', 0000 NA', ' ')
@@ -307,7 +307,7 @@ class AddressValidator:
                 
             display_name = ' '.join(display_name.split())
             # Validate address format
-            print(display_name)
+            # print(display_name)
             if not looks_like_address(display_name):
                 continue
         
