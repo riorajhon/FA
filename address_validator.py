@@ -235,6 +235,10 @@ class AddressValidator:
             # nominatim_country = "Palestinian Territory"
             # nominatim_country = "The Netherlands"
             # nominatim_country = "Timor Leste"
+            
+            if country_name.lower() in ["luhansk", "crimea", "donetsk"]
+                nominatim_country = country_name
+        
             if not validate_address_region(display_name, nominatim_country):
                 # print(f"\n region {display_name} {nominatim_country} \n")
                 continue
