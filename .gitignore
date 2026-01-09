@@ -4,3 +4,4 @@ osm_data
 __pycache__
 eh-latest.osm.pbf
 .env
+split

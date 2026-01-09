@@ -64,6 +64,7 @@ class CountryStatusProcessor:
             'south korea': 'KR',
             'north korea': 'KP',
             'democratic republic of the congo': 'CD',
+            'Congo, Democratic Republic of the': 'CD',
             'republic of the congo': 'CG',
             'ivory coast': 'CI',
             'the netherlands': 'NL',
@@ -95,18 +96,20 @@ class CountryStatusProcessor:
         
         return None
     
-    def save_country_status(self, country_name: str, country_code: str):
-        """Save country with status to database"""
+    def save_country_status(self, country_name: str, country_code: Optional[str] = None):
+        """Save country with status to database, even without country code"""
         document = {
             'country_name': country_name,
-            'country_code': country_code,
             'status': 'origin'
         }
         
-        # Check if already exists
+        # Add country code only if found
+        if country_code:
+            document['country_code'] = country_code
+        
+        # Check if already exists (by country name only)
         existing = self.countries_collection.find_one({
-            'country_name': country_name,
-            'country_code': country_code
+            'country_name': country_name
         })
         
         if not existing:
@@ -147,13 +150,14 @@ class CountryStatusProcessor:
             # Find country code
             country_code = self.find_country_code(country_name, geonames_data)
             
-            if country_code:
-                # Save to database
-                if self.save_country_status(country_name, country_code):
-                    stats['saved'] += 1
-                else:
-                    stats['already_exists'] += 1
+            # Save to database regardless of whether country code was found
+            if self.save_country_status(country_name, country_code):
+                stats['saved'] += 1
             else:
+                stats['already_exists'] += 1
+            
+            # Track countries without codes for reporting
+            if not country_code:
                 stats['not_found'] += 1
                 not_found_countries.append(country_name)
         
@@ -164,10 +168,10 @@ class CountryStatusProcessor:
         print(f"📊 Countries processed: {stats['processed']}")
         print(f"💾 Countries saved: {stats['saved']}")
         print(f"🔄 Already existed: {stats['already_exists']}")
-        print(f"❌ Not found: {stats['not_found']}")
+        print(f"❌ Saved without country code: {stats['not_found']}")
         
         if not_found_countries:
-            print(f"\n⚠️  Countries without codes:")
+            print(f"\n⚠️  Countries saved without country codes:")
             for country in not_found_countries:
                 print(f"   - {country}")
     

@@ -374,10 +374,10 @@ def compute_bounding_box_areas_meters(nominatim_results):
 
 
 if __name__ == "__main__":
-    address = "antinio sampanio, 345, Estrada Suai - Maliana, Lesuboten, Maliana, Bobonaro, Timor Leste"
+    address = 'СТО ТОВ "Богдан авто", 1а, Мадридська вулиця, Luhansk, Артемівський район, Луганська міська громада, Луганський район, Luhansk Oblast, 91020, Ukraine'
     # address = address.replace(', Netherlands', ' ')
     # print(address)
-    seed = "Timor Leste"
+    seed = "Luhansk"
     # nominatim = [
     #      "13.8718477",
     #         "13.8719477",
