@@ -255,7 +255,7 @@ class AddressValidator:
         territory_variations = {
             "Reunion": "Réunion,",
             "U.S. Virgin Islands": "United States Virgin Islands,",
-            "Hong Kong": "Hong Kong,"
+            "Hong Kong": "Hong Kong,",
             "Martinique": "Martinique,",
             "French Guiana": "French Guiana,", 
             "French Polynesia": "French Polynesia,",
@@ -263,7 +263,7 @@ class AddressValidator:
             "Mayotte": "Mayotte,",
             "New Caledonia": "New Caledonia,",
             "Puerto Rico": "Puerto Rico,",
-            "Guam": "Guam,",
+            "Guam": "Guam,"
         }
         
         # Check if this is a territory we need to process
