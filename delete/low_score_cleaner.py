@@ -45,36 +45,6 @@ class LowScoreCleaner:
         addresses = list(self.collection.find(query).limit(limit))
         return addresses
     
-    def check_address_scores(self, addresses: List[Dict]) -> Dict:
-        """Check Nominatim scores for addresses and categorize them"""
-        addresses_to_delete = []
-        addresses_to_update = []
-        
-        for i, addr_doc in enumerate(addresses, 1):
-            address = addr_doc.get("address", "")
-            addr_id = addr_doc["_id"]
-            
-            try:
-                score = check_with_nominatim(address)
-                
-                # check_with_nominatim returns only score now
-                if isinstance(score, (int, float)) and score >= self.score_threshold:
-                    addresses_to_update.append({"_id": addr_id, "score": score})
-                else:
-                    # Delete if score < threshold, or if it's a string (TIMEOUT, API_ERROR) or 0.0
-                    addresses_to_delete.append({"_id": addr_id})
-                        
-            except Exception:
-                # On error, delete the address
-                addresses_to_delete.append({"_id": addr_id})
-            
-            time.sleep(0.5)  # API rate limiting
-        
-        return {
-            "to_delete": addresses_to_delete,
-            "to_update": addresses_to_update
-        }
-    
     def update_high_score_addresses(self, addresses_to_update: List[Dict]) -> int:
         """Update addresses with high scores to set score and status=1"""
         if not addresses_to_update:
@@ -139,10 +109,10 @@ class LowScoreCleaner:
                     total_deleted += 1
                 
                 # Show progress immediately after each score check
-                progress = ((total_processed + i) / (total_processed + len(addresses))) * 100
-                print(f"\rProgress: {progress:.1f}% | Deleted: {total_deleted} | Updated: {total_updated}", end='', flush=True)
+                batch_progress = (i / len(addresses)) * 100
+                print(f"\rProgress: {batch_progress:.1f}% | Deleted: {total_deleted} | Updated: {total_updated}", end='', flush=True)
                 
-                time.sleep(0.5)  # API rate limiting
+                time.sleep(1)  # API rate limiting
             
             # Delete low score addresses
             self.delete_low_score_addresses(categorized["to_delete"])
