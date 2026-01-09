@@ -335,6 +335,7 @@ def validate_address_region(generated_address: str, seed_address: str) -> bool:
     
     # Extract city and country from both addresses
     gen_city, gen_country = extract_city_country(generated_address, two_parts=(',' in seed_address))
+    # print(gen_city)
     seed_address_lower = seed_address.lower()
     seed_address_mapped = COUNTRY_MAPPING.get(seed_address.lower(), seed_address.lower())
 
@@ -374,10 +375,10 @@ def compute_bounding_box_areas_meters(nominatim_results):
 
 
 if __name__ == "__main__":
-    address = 'СТО ТОВ "Богдан авто", 1а, Мадридська вулиця, Luhansk, Артемівський район, Луганська міська громада, Луганський район, Luhansk Oblast, 91020, Ukraine'
+    address = "9, 巴士度街 Rua de António Basto, 塔石 Tap Siac, São Lázaro, Macau, Macao"
     # address = address.replace(', Netherlands', ' ')
     # print(address)
-    seed = "Luhansk"
+    seed = "Macau"
     # nominatim = [
     #      "13.8718477",
     #         "13.8719477",
