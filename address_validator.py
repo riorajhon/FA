@@ -203,6 +203,8 @@ class AddressValidator:
             territory1 = "Réunion"
         if territory == "U.S. Virgin IslandsUnited":
             territory1 = "United States Virgin Islands"
+        if territory == "Macao":
+            territory1 = "Macau"
             
         pattern = re.compile(re.escape(territory1), re.IGNORECASE)
         match = pattern.search(address)

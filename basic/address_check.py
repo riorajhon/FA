@@ -375,10 +375,10 @@ def compute_bounding_box_areas_meters(nominatim_results):
 
 
 if __name__ == "__main__":
-    address = "Sénégal Couture Mixte, 64, Rue Campement, Ouenzé, Ouenze (arrondissement 5), Brazzaville (municipality), Brazzaville (department), BP 1234, Republic of the Congo"
+    address = "Sa'ed Al Ansari Mosque, Al Barrawi, Beit Lahiya, North Gaza Governorate, Gaza Strip, 500, Palestinian Territory"
     # address = address.replace(', Netherlands', ' ')
     # print(address)
-    seed = "Republic of the Congo"
+    seed = "Palestinian Territory"
     # nominatim = [
     #      "13.8718477",
     #         "13.8719477",
