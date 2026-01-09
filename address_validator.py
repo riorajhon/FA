@@ -12,7 +12,8 @@ import sys
 import json
 import time
 import requests
-from typing import Dict, List, Optional
+import re
+from typing import Dict, List, Optional, Tuple
 from pymongo import MongoClient
 import logging
 
@@ -37,6 +38,37 @@ class AddressValidator:
             'User-Agent': 'OSM Address Validator/1.0',
             'Accept-Language': 'en'
         })
+        
+        self.territories = [
+            "Martinique",
+            "French Guiana", 
+            "French Polynesia",
+            "Guadeloupe",
+            "Reunion",
+            "Mayotte",
+            "New Caledonia",
+            "Puerto Rico",
+            "Guam",
+            "U. S. Virgin Islands",
+            "Hong Kong",
+            "Macao"
+        ]
+        
+        # Special processing rules
+        self.special_rules = {
+            "Reunion": {
+                "address_replace": {"Réunion": "Reunion"},
+                "country": "Reunion"
+            },
+            "U.S. Virgin Islands": {
+                "address_replace": {"United States Virgin Islands": "U.S. Virgin Islands"},
+                "country": "U.S. Virgin Islands"
+            },
+            "Macao": {
+                "address_append": ", Macao",
+                "country": "Macao"
+            }
+        }
         
     def get_address_batches(self, country_name: str, limit: int) -> List[Dict]:
         """Get address batches from database"""
@@ -161,6 +193,50 @@ class AddressValidator:
             logger.error(f"Error saving address {address_data.get('osm_id', 'unknown')}: {e}")
             raise
     
+    def trim_address_to_territory(self, address: str, territory: str) -> str:
+        """Trim address from start to the territory name (inclusive)"""
+        # Find the territory in the address (case-insensitive)
+        
+        territory1 = territory
+        
+        if territory == "Reunion":
+            territory1 = "Réunion"
+        if territory == "U.S. Virgin IslandsUnited":
+            territory1 = "United States Virgin Islands"
+            
+        pattern = re.compile(re.escape(territory1), re.IGNORECASE)
+        match = pattern.search(address)
+       
+        if match:
+            # Trim from start to end of territory name
+            end_pos = match.end()
+            trimmed = address[:end_pos].strip()
+            return trimmed
+        
+        return address  # Return original if territory not found
+    
+    def apply_special_rules(self, address: str, territory: str) -> Tuple[str, str]:
+        """Apply special processing rules for specific territories"""
+        if territory not in self.special_rules:
+            return address, territory
+        
+        rules = self.special_rules[territory]
+        processed_address = address
+        
+        # Apply address replacements
+        if "address_replace" in rules:
+            for old_text, new_text in rules["address_replace"].items():
+                processed_address = processed_address.replace(old_text, new_text)
+        
+        # Apply address append
+        if "address_append" in rules:
+            processed_address += rules["address_append"]
+        
+        # Get new country name
+        new_country = rules.get("country", territory)
+        
+        return processed_address, new_country
+    
     def process_batch(self, batch: Dict, country_name: str) -> Dict:
         """Process a single batch of OSM IDs"""
         batch_id = batch['_id']
@@ -202,45 +278,36 @@ class AddressValidator:
             for char in special_chars:
                 display_name = display_name.replace(char, ' ')
                 
-            #for Aruba, Curacao
-            # display_name = display_name.replace(', Netherlands', ' ')
-            # display_name = display_name.replace(', 0000 NA', ' ')
+            # nominatim_country = result.get('address', {}).get('country', country_name)
+            nominatim_country = country_name
             
-            #for Cape Verde -> Cabo Verde
-            # display_name = display_name.replace(', Cape Verde', ', Cabo Verde')
-            
-            # for Palestinian Territories -> Palestinian Territory
-            # display_name = display_name.replace('Palestinian Territories', 'Palestinian Territory')
-            
-            # for congo
-            # display_name = display_name.replace('Congo-Brazzaville', 'Republic of the Congo')
+            match country_name.lower():
+                case "Aruba" | "Curacao":
+                    display_name = display_name.replace(', Netherlands', ' ')
+                    display_name = display_name.replace(', 0000 NA', ' ')
+                case "Cabo Verde":
+                    display_name = display_name.replace(', Cape Verde', ', Cabo Verde')
+                case "Palestinian Territory":
+                    display_name = display_name.replace('Palestinian Territories', 'Palestinian Territory')
+                case "Republic of the Congo":
+                    display_name = display_name.replace('Congo-Brazzaville', 'Republic of the Congo')
+                case "Timor Leste":
+                    display_name = display_name.replace('East Timor', 'Timor Leste')
+                case _:
+                    nominatim_country = nominatim_country
 
-            # for Netherlands
-            # display_name = display_name.replace('Netherlands', 'Republic of the Congo')
-            # Clean up multiple spaces
             
-            #for timor
-            display_name = display_name.replace('East Timor', 'Timor Leste')
-            
+            if country_name in self.territories:
+                display_name = self.trim_address_to_territory(display_name, country_name)
+                display_name, nominatim_country = self.apply_special_rules(display_name, country_name)
+                
             display_name = ' '.join(display_name.split())
-            
             # Validate address format
+            
             if not looks_like_address(display_name):
-                # print("\n looks")
                 continue
-            
-            # Validate region - use country from Nominatim result
-            nominatim_country = result.get('address', {}).get('country', country_name)
-            # nominatim_country = "Cabo Verde"
-            # nominatim_country = "Palestinian Territory"
-            # nominatim_country = "The Netherlands"
-            # nominatim_country = "Timor Leste"
-            
-            if country_name.lower() in ["luhansk", "crimea", "donetsk"]:
-                nominatim_country = country_name
         
             if not validate_address_region(display_name, nominatim_country):
-                # print(f"\n region {display_name} {nominatim_country} \n")
                 continue
             
             # Check place_rank - only save if > 20
@@ -262,7 +329,6 @@ class AddressValidator:
             # Save address
             address_data = {
                 'osm_id': osm_id,
-                # 'country': components['country'],
                 'country': nominatim_country,
                 'city': components['city'],
                 'street': components['street'],

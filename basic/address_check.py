@@ -375,10 +375,10 @@ def compute_bounding_box_areas_meters(nominatim_results):
 
 
 if __name__ == "__main__":
-    address = "9, 巴士度街 Rua de António Basto, 塔石 Tap Siac, São Lázaro, Macau, Macao"
+    address = "Sénégal Couture Mixte, 64, Rue Campement, Ouenzé, Ouenze (arrondissement 5), Brazzaville (municipality), Brazzaville (department), BP 1234, Republic of the Congo"
     # address = address.replace(', Netherlands', ' ')
     # print(address)
-    seed = "Macau"
+    seed = "Republic of the Congo"
     # nominatim = [
     #      "13.8718477",
     #         "13.8719477",
