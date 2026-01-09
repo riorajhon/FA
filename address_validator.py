@@ -18,8 +18,8 @@ from pymongo import MongoClient
 import logging
 
 # Import validation functions from basic module
-sys.path.append('basic')
-from address_check import looks_like_address, validate_address_region, compute_bounding_box_areas_meters
+from basic.address_check import looks_like_address, validate_address_region, compute_bounding_box_areas_meters
+from basic.address_score import check_with_nominatim
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -238,7 +238,57 @@ class AddressValidator:
         new_country = rules.get("country", territory)
         
         return processed_address, new_country
-    
+    def process_territory_display_name(self, country_name: str, nominatim_country: str, display_name: str) -> str:
+        """
+        Process display name for territories by removing nominatim country and adding territory name
+        
+        Args:
+            country_name: Target territory name (e.g., "Reunion")
+            nominatim_country: Country from Nominatim (e.g., "France") 
+            display_name: Original display name
+            
+        Returns:
+            Modified display name with territory name instead of nominatim country
+        """
+        
+        # Territory variations to remove (only one variation per territory)
+        territory_variations = {
+            "Reunion": "Réunion,",
+            "U.S. Virgin Islands": "United States Virgin Islands,",
+            "Hong Kong": "Hong Kong,"
+            "Martinique": "Martinique,",
+            "French Guiana": "French Guiana,", 
+            "French Polynesia": "French Polynesia,",
+            "Guadeloupe": "Guadeloupe,",
+            "Mayotte": "Mayotte,",
+            "New Caledonia": "New Caledonia,",
+            "Puerto Rico": "Puerto Rico,",
+            "Guam": "Guam,",
+        }
+        
+        # Check if this is a territory we need to process
+        if country_name not in territory_variations:
+            return display_name
+        
+        # Remove nominatim_country from display_name
+        if nominatim_country and nominatim_country in display_name:
+            display_name = display_name.replace(nominatim_country, "").strip()
+            # Clean up any double commas or spaces
+            display_name = display_name.replace(",,", ",").strip(", ")
+        
+        # Remove existing territory variation
+        variation_to_remove = territory_variations[country_name]
+        if variation_to_remove in display_name:
+            display_name = display_name.replace(variation_to_remove, "").strip(", ")
+        
+        # Add the country_name at the end
+        if display_name:
+            display_name = f"{display_name}, {country_name}"
+        else:
+            display_name = country_name
+        
+        return display_name
+            
     def process_batch(self, batch: Dict, country_name: str) -> Dict:
         """Process a single batch of OSM IDs"""
         batch_id = batch['_id']
@@ -280,38 +330,42 @@ class AddressValidator:
             for char in special_chars:
                 display_name = display_name.replace(char, ' ')
                 
-            # nominatim_country = result.get('address', {}).get('country', country_name)
-            nominatim_country = country_name
-            
-            match country_name:
-                case "Aruba" | "Curacao":
-                    display_name = display_name.replace(', Netherlands', ' ')
-                    display_name = display_name.replace(', 0000 NA', ' ')
-                case "Cabo Verde":
-                    display_name = display_name.replace(', Cape Verde', ', Cabo Verde')
-                case "Palestinian Territory":
-                    display_name = display_name.replace('Palestinian Territories', 'Palestinian Territory')
-                case "Republic of the Congo":
-                    display_name = display_name.replace('Congo-Brazzaville', 'Republic of the Congo')
-                case "Timor Leste":
-                    display_name = display_name.replace('East Timor', 'Timor Leste')
-                case "Maldives":
-                    display_name = display_name.replace('é', 'e')
-                case _:
-                    nominatim_country = nominatim_country
+            # match country_name:
+            #     case "Aruba" | "Curacao":
+            #         display_name = display_name.replace(', Netherlands', ' ')
+            #         display_name = display_name.replace(', 0000 NA', ' ')
+            #     case "Cabo Verde":
+            #         display_name = display_name.replace(', Cape Verde', ', Cabo Verde')
+            #     case "Palestinian Territory":
+            #         display_name = display_name.replace('Palestinian Territories', 'Palestinian Territory')
+            #     case "Republic of the Congo":
+            #         display_name = display_name.replace('Congo-Brazzaville', 'Republic of the Congo')
+            #     case "Timor Leste":
+            #         display_name = display_name.replace('East Timor', 'Timor Leste')
+            #     case "Maldives":
+            #         display_name = display_name.replace('é', 'e')
+            #     case _:
+            #         nominatim_country = nominatim_country
 
             
             if country_name in self.territories:
-                display_name = self.trim_address_to_territory(display_name, country_name)
-                display_name, nominatim_country = self.apply_special_rules(display_name, country_name)
+                nominatim_country = result.get('address', {}).get('country', country_name)
+                display_name = self.process_territory_display_name(country_name, nominatim_country, display_name)
+                # display_name = self.trim_address_to_territory(display_name, country_name)
+                # display_name, nominatim_country = self.apply_special_rules(display_name, country_name)
+                
+            nominatim_country = country_name    
+            # Process territories display names
+            # display_name = self.process_territory_display_name(country_name, nominatim_country, display_name)
                 
             display_name = ' '.join(display_name.split())
-            # Validate address format
-            # print(display_name)
+
             if not looks_like_address(display_name):
+                print("failed looks_like_address")
                 continue
         
             if not validate_address_region(display_name, nominatim_country):
+                print("failed validate_address_region")
                 continue
             
             # Check place_rank - only save if > 20
@@ -323,11 +377,12 @@ class AddressValidator:
             components = self.extract_address_components(result)
             
             # Calculate score from bounding box
-            bbox = result.get('boundingbox', [])
-            score = self.calculate_score(bbox) if len(bbox) == 4 else 0.3
+            # bbox = result.get('boundingbox', [])
+            # score = self.calculate_score(bbox) if len(bbox) == 4 else 0.3
+            score = check_with_nominatim(display_name)
             
             if score < 0.9:
-                # print("\n score")
+                print("failed with score < 0.9")
                 continue
             
             # Save address
@@ -337,7 +392,7 @@ class AddressValidator:
                 'city': components['city'],
                 'street': components['street'],
                 'score': score,
-                'status': 0,
+                'status': 1,
                 'address': display_name  # Add this field to satisfy the existing index
             }
             
@@ -354,6 +409,7 @@ class AddressValidator:
         self.update_batch_status(batch_id, 'checked')
         
         return stats
+            # Validate address format
     
     def process_country(self, country_name: str, limit: int):
         """Process all batches for a country"""

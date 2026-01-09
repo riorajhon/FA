@@ -375,11 +375,11 @@ def compute_bounding_box_areas_meters(nominatim_results):
 
 
 if __name__ == "__main__":
-    address = "112, Lainoofaru Magu, Male Atoll, 08080, Maldives"
+    address = "33, Rue Moreau de Jonnès, Fort-de-France, 97200, Martinique"
     # address = address.replace(', Netherlands', ' ')
     # print(address)
-    seed = "Maldives"
-    # nominatim = [
+    seed = "Martinique"
+    # nominatim = [``
     #      "13.8718477",
     #         "13.8719477",
     #         "43.6984081",
