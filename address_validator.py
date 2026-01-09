@@ -49,7 +49,7 @@ class AddressValidator:
             "New Caledonia",
             "Puerto Rico",
             "Guam",
-            "U. S. Virgin Islands",
+            "U.S. Virgin Islands",
             "Hong Kong",
             "Macao"
         ]
@@ -263,7 +263,8 @@ class AddressValidator:
             "Mayotte": "Mayotte,",
             "New Caledonia": "New Caledonia,",
             "Puerto Rico": "Puerto Rico,",
-            "Guam": "Guam,"
+            "Guam": "Guam,",
+            "Macao": "Macao"
         }
         
         # Check if this is a territory we need to process
@@ -280,6 +281,10 @@ class AddressValidator:
         variation_to_remove = territory_variations[country_name]
         if variation_to_remove in display_name:
             display_name = display_name.replace(variation_to_remove, "").strip(", ")
+            
+        # print("----------------")    
+        # print(variation_to_remove, nominatim_country)
+        # print("----------------")    
         
         # Add the country_name at the end
         if display_name:
@@ -365,7 +370,6 @@ class AddressValidator:
                 continue
         
             if not validate_address_region(display_name, nominatim_country):
-                print("failed validate_address_region")
                 continue
             
             # Check place_rank - only save if > 20
