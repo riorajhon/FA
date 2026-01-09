@@ -335,23 +335,25 @@ class AddressValidator:
             for char in special_chars:
                 display_name = display_name.replace(char, ' ')
                 
-            # match country_name:
-            #     case "Aruba" | "Curacao":
-            #         display_name = display_name.replace(', Netherlands', ' ')
-            #         display_name = display_name.replace(', 0000 NA', ' ')
-            #     case "Cabo Verde":
-            #         display_name = display_name.replace(', Cape Verde', ', Cabo Verde')
-            #     case "Palestinian Territory":
-            #         display_name = display_name.replace('Palestinian Territories', 'Palestinian Territory')
-            #     case "Republic of the Congo":
-            #         display_name = display_name.replace('Congo-Brazzaville', 'Republic of the Congo')
-            #     case "Timor Leste":
-            #         display_name = display_name.replace('East Timor', 'Timor Leste')
-            #     case "Maldives":
-            #         display_name = display_name.replace('é', 'e')
-            #     case _:
-            #         nominatim_country = nominatim_country
-
+            match country_name:
+                case "Aruba":
+                    display_name = display_name.replace(', Netherlands', ' ')
+                case "Curacao":
+                    display_name = display_name.replace(', Netherlands', ' ')
+                    display_name = display_name.replace('Curacao,', ' ')
+                    display_name = f"{display_name}, {country_name}"
+                case "Cabo Verde":
+                    display_name = display_name.replace(', Cape Verde', ', Cabo Verde')
+                case "Palestinian Territory":
+                    display_name = display_name.replace('Palestinian Territories', 'Palestinian Territory')
+                case "Republic of the Congo":
+                    display_name = display_name.replace('Congo-Brazzaville', 'Republic of the Congo')
+                case "Timor Leste":
+                    display_name = display_name.replace('East Timor', 'Timor Leste')
+                case "Maldives":
+                    display_name = display_name.replace('é', 'e')
+                case _:
+                    nominatim_country = nominatim_country
             
             if country_name in self.territories:
                 nominatim_country = result.get('address', {}).get('country', country_name)
@@ -368,8 +370,9 @@ class AddressValidator:
             if not looks_like_address(display_name):
                 print("failed looks_like_address")
                 continue
-        
+            # print(display_name)
             if not validate_address_region(display_name, nominatim_country):
+                print("failed validate_address_region")
                 continue
             
             # Check place_rank - only save if > 20

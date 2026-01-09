@@ -153,7 +153,7 @@ def check_with_nominatim(address: str) -> Union[float, str, dict]:
 
 
 if __name__ == "__main__":
-    address = "Caisse d'Épargne, 34, Rue Saint-Joseph L'Ouvrier, La Providence, Saint-Denis, 97400, Reunion"
+    address = "53, Gogolia Street, Sorokyne, Сорокинська міська громада, Довжанський район, Luhansk Oblast, 94405, Ukraine"
     
     result = check_with_nominatim(address)
     
