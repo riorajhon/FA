@@ -18,6 +18,9 @@ from pymongo import MongoClient
 import logging
 
 # Import validation functions from basic module
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '.'))
 from basic.address_check import looks_like_address, validate_address_region, compute_bounding_box_areas_meters
 from basic.address_score import check_with_nominatim
 
@@ -353,7 +356,7 @@ class AddressValidator:
                 case "Maldives":
                     display_name = display_name.replace('é', 'e')
                 case _:
-                    nominatim_country = nominatim_country
+                    nominatim_country = country_name
             
             if country_name in self.territories:
                 nominatim_country = result.get('address', {}).get('country', country_name)
