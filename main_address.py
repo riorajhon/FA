@@ -58,7 +58,7 @@ class MainAddressProcessor:
             
             try:
                 # Process country with limit 1
-                self.validator.process_country(country_name, limit=10)
+                self.validator.process_country(country_name, limit=2)
                 stats['successful'] += 1
                 print(f"✅ Completed: {country_name}")
                 
