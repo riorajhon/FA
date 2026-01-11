@@ -3,7 +3,7 @@
 OSM PBF Address Processor - Optimized Version
 Processes OSM PBF files to extract address data and store in MongoDB
 
-Requirements: pip install pymongo osmium python-dotenv
+Requirements: pip install pymongo osmium
 Usage: python osm_processor.py <osm_filename>
 """
 
@@ -15,10 +15,6 @@ from typing import Optional
 from pymongo import MongoClient, InsertOne
 import osmium
 import logging
-from dotenv import load_dotenv
-
-# Load environment variables
-load_dotenv()
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -44,22 +40,32 @@ class OSMAddressProcessor(osmium.SimpleHandler):
         self.file_size = file_size
         self.bytes_processed = 0
         self.last_progress_report = 0
-            
-    def way(self, w):
-        if 'addr:housenumber' in w.tags:
-            return
-        if 'building' not in w.tags:
-            return
-        if 'addr:street' not in w.tags:
-            return
-        
-        # Filter out ways with bbox < 1000 m²
-        # if not self._filter_way_bbox(w):
-        #     return
-            
-        self._add_address(f'W{w.id}')
+    def check(self, t):
+        if 'addr:housenumber' in t.tags:
+            return False
+        if 'building' not in t.tags:
+            return False
+        # if 'addr:place' not in t.tags:
+        #     return False
+        if 'addr:street' not in t.tags:
+            return False
+        # if 'addr:city' not in t.tags:
+        #     return False 
+        return True    
+    def node(self, n):
+        if self.check(n):
+            self._add_address(f'N{n.id}')
         self._update_progress()
             
+    def way(self, w):
+        if self.check(w):
+            self._add_address(f'W{w.id}')
+        self._update_progress()
+            
+    def relation(self, r):
+        if self.check(r):
+            self._add_address(f'R{r.id}')
+        self._update_progress()
     
     def _update_progress(self):
         """Update file processing progress"""
@@ -80,61 +86,6 @@ class OSMAddressProcessor(osmium.SimpleHandler):
                     print(f"\rProgress: {estimated_progress:.1f}% | File: {processed_mb:.1f}MB/{file_size_mb:.1f}MB | Addresses: {self.processed:,} | Batches: {self.saved_batches:,}", end='', flush=True)
             
             self.last_progress_report = current_time
-    
-    def _filter_way_bbox(self, way, max_area_m2=1000):
-        """
-        Filter OSM way based on its bounding box area - must have bbox and be < max_area_m2
-        
-        Args:
-            way: OSM way object
-            max_area_m2: Maximum area in square meters (default: 1000)
-            
-        Returns:
-            bool: True if way has valid bbox and area < max_area_m2, False otherwise
-        """
-        try:
-            import math
-            
-            # Get way nodes to calculate bounding box
-            if not way.nodes:
-                return False  # Must have nodes
-                
-            # Extract coordinates from way nodes
-            lons = [node.lon for node in way.nodes]
-            lats = [node.lat for node in way.nodes]
-            
-            if not lons or not lats:
-                return False  # Must have valid coordinates
-            print("____________")
-            # Create bounding box
-            min_lon, min_lat = min(lons), min(lats)
-            max_lon, max_lat = max(lons), max(lats)
-            
-            # Must have a valid bounding box (not a single point)
-            if min_lon == max_lon and min_lat == max_lat:
-                return False
-            
-            # Calculate approximate area using coordinate differences
-            # 1 degree latitude ≈ 111,320 meters
-            # 1 degree longitude ≈ 111,320 * cos(latitude) meters
-            
-            # Average latitude for longitude calculation
-            avg_lat = (min_lat + max_lat) / 2
-            lat_rad = math.radians(avg_lat)
-            
-            # Calculate dimensions in meters
-            lat_diff_m = abs(max_lat - min_lat) * 111320  # meters per degree latitude
-            lon_diff_m = abs(max_lon - min_lon) * 111320 * math.cos(lat_rad)  # adjusted for latitude
-            
-            # Calculate area in square meters
-            area_m2 = lat_diff_m * lon_diff_m
-            
-            # Return True only if area is LESS than max_area_m2
-            return area_m2 < max_area_m2
-            
-        except Exception:
-            # If any error occurs, exclude the way (strict approach)
-            return False
     
     def _add_address(self, element_id):
         self.batch.append(element_id)
@@ -244,21 +195,12 @@ def find_osm_file(filename):
     file_path = os.path.join('osm_data', filename)
     return file_path if os.path.exists(file_path) else None
 
-def try_mongodb_connection():
-    """Test MongoDB connection using environment variables"""
-    mongodb_uri = os.getenv('MONGODB_URI')
-    if not mongodb_uri:
-        logger.error("MONGODB_URI not found in environment variables")
-        return None, None
-        
+def try_mongodb_connection(mongodb_uri):
+    """Test MongoDB connection"""
     try:
         client = MongoClient(mongodb_uri, serverSelectionTimeoutMS=5000)
         client.admin.command('ping')
-        
-        db_name = os.getenv('DB_NAME', 'osm_addresses')
-        collection_name = os.getenv('COLLECTION_ADDRESS_BATCHES', 'address_batches')
-        collection = client[db_name][collection_name]
-        
+        collection = client.osm_addresses.address_batches
         # Test write permission
         test_doc = {'test': True}
         result = collection.insert_one(test_doc)
@@ -268,7 +210,7 @@ def try_mongodb_connection():
         logger.warning(f"MongoDB connection failed: {e}")
         return None, None
 
-def process_osm_file(filename, country_code, country_name):
+def process_osm_file(filename, country_code, country_name, force_json=False, mongodb_uri="mongodb://admin:fjkfjrj!20020415@localhost:27017/?authSource=admin"):
     """Process OSM file with simple progress tracking and fallback storage"""
     file_path = find_osm_file(filename)
     if not file_path:
@@ -278,12 +220,19 @@ def process_osm_file(filename, country_code, country_name):
     file_size = get_file_size(file_path)
     file_size_formatted = format_file_size(file_size)
     
-    # Try MongoDB connection
-    client, collection = try_mongodb_connection()
-    use_file_storage = collection is None
+    # Try MongoDB connection (unless forced to use JSON)
+    if force_json:
+        client, collection = None, None
+        use_file_storage = True
+        print("Forced JSON output - saving to output/addresses.jsonl")
+    else:
+        client, collection = try_mongodb_connection(mongodb_uri)
+        use_file_storage = collection is None
+        
+        if use_file_storage:
+            print("MongoDB not available - saving to output/addresses.jsonl")
     
     if use_file_storage:
-        print("MongoDB not available - saving to output/addresses.jsonl")
         os.makedirs('output', exist_ok=True)
         # Clear previous output file
         with open('output/addresses.jsonl', 'w') as f:
@@ -318,18 +267,20 @@ def process_osm_file(filename, country_code, country_name):
             client.close()
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Usage: python osm_processor.py <osm_filename> <country_code> <country_name>")
+    if len(sys.argv) < 4 or len(sys.argv) > 5:
+        print("Usage: python osm_processor.py <osm_filename> <country_code> <country_name> [json]")
         print("Example: python osm_processor.py ye YE Yemen")
-        print("Example: python osm_processor.py us US \"United States\"")
+        print("Example: python osm_processor.py us US \"United States\" json")
+        print("Add 'json' as 4th parameter to force JSON output instead of MongoDB")
         sys.exit(1)
     
     filename = sys.argv[1]
     country_code = sys.argv[2]
     country_name = sys.argv[3]
+    force_json = len(sys.argv) == 5 and sys.argv[4].lower() == 'json'
     
     try:
-        stats = process_osm_file(filename, country_code, country_name)
+        stats = process_osm_file(filename, country_code, country_name, force_json)
         print(f"Processed {stats['addresses']} addresses in {stats['batches']} batches")
     except Exception as e:
         logger.error(f"Error: {e}")

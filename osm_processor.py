@@ -199,7 +199,7 @@ def try_mongodb_connection(mongodb_uri):
         logger.warning(f"MongoDB connection failed: {e}")
         return None, None
 
-def process_osm_file(filename, country_code, country_name, mongodb_uri="mongodb://admin:fjkfjrj!20020415@localhost:27017/?authSource=admin"):
+def process_osm_file(filename, country_code, country_name, force_json=False, mongodb_uri="mongodb://admin:fjkfjrj!20020415@localhost:27017/?authSource=admin"):
     """Process OSM file with simple progress tracking and fallback storage"""
     file_path = find_osm_file(filename)
     if not file_path:
@@ -209,12 +209,19 @@ def process_osm_file(filename, country_code, country_name, mongodb_uri="mongodb:
     file_size = get_file_size(file_path)
     file_size_formatted = format_file_size(file_size)
     
-    # Try MongoDB connection
-    client, collection = try_mongodb_connection(mongodb_uri)
-    use_file_storage = collection is None
+    # Try MongoDB connection (unless forced to use JSON)
+    if force_json:
+        client, collection = None, None
+        use_file_storage = True
+        print("Forced JSON output - saving to output/addresses.jsonl")
+    else:
+        client, collection = try_mongodb_connection(mongodb_uri)
+        use_file_storage = collection is None
+        
+        if use_file_storage:
+            print("MongoDB not available - saving to output/addresses.jsonl")
     
     if use_file_storage:
-        print("MongoDB not available - saving to output/addresses.jsonl")
         os.makedirs('output', exist_ok=True)
         # Clear previous output file
         with open('output/addresses.jsonl', 'w') as f:
@@ -249,18 +256,20 @@ def process_osm_file(filename, country_code, country_name, mongodb_uri="mongodb:
             client.close()
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Usage: python osm_processor.py <osm_filename> <country_code> <country_name>")
+    if len(sys.argv) < 4 or len(sys.argv) > 5:
+        print("Usage: python osm_processor.py <osm_filename> <country_code> <country_name> [json]")
         print("Example: python osm_processor.py ye YE Yemen")
-        print("Example: python osm_processor.py us US \"United States\"")
+        print("Example: python osm_processor.py us US \"United States\" json")
+        print("Add 'json' as 4th parameter to force JSON output instead of MongoDB")
         sys.exit(1)
     
     filename = sys.argv[1]
     country_code = sys.argv[2]
     country_name = sys.argv[3]
+    force_json = len(sys.argv) == 5 and sys.argv[4].lower() == 'json'
     
     try:
-        stats = process_osm_file(filename, country_code, country_name)
+        stats = process_osm_file(filename, country_code, country_name, force_json)
         print(f"Processed {stats['addresses']} addresses in {stats['batches']} batches")
     except Exception as e:
         logger.error(f"Error: {e}")

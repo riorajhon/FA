@@ -5,4 +5,7 @@ __pycache__
 eh-latest.osm.pbf
 .env
 split
-address_generator_final
+final
+output
+doll
+delete

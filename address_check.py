@@ -13,10 +13,10 @@ from basic.address_score import check_with_nominatim
 def load_address_dictionary():
     """Load address dictionary from JSON file"""
     try:
-        with open('address_generator_final/address_dictionary.json', 'r', encoding='utf-8') as f:
+        with open('final/address_dictionary.json', 'r', encoding='utf-8') as f:
             return json.load(f)
     except FileNotFoundError:
-        print("Error: address_dictionary.json not found in address_generator_final/")
+        print("Error: address_dictionary.json not found in final/")
         return None
     except Exception as e:
         print(f"Error loading address dictionary: {e}")

@@ -59,7 +59,9 @@ def check_with_nominatim(address: str) -> Union[float, str, dict]:
         
         # Check if we have any results
         if len(results) == 0:
+            print("no results")
             return 0.0
+        # print("dfsfsdf")
         
         # Extract numbers from the original address for matching
         original_numbers = set(re.findall(r"[0-9]+", address.lower()))
@@ -70,19 +72,23 @@ def check_with_nominatim(address: str) -> Union[float, str, dict]:
             # Check place_rank is 20 or above
             place_rank = result.get('place_rank', 0)
             if place_rank < 20:
+                print("rank_failed")
                 continue
-
             # Check that 'name' field exists and is in the original address
             name = result.get('name', '')
+            # print(result.get('display_name', ''))
+            # print(name)
             if name:
                 # Check if name is in the address (case-insensitive)
                 if name.lower() not in address.lower():
+                    print(name.lower())
+                    print(address.lower())
                     continue
-            
-            
+            # print("dfsdfsdfsdf")
             
             # Check that numbers in display_name match numbers from the original address
             display_name = result.get('display_name', '')
+            
             if display_name:
                 display_numbers = set(re.findall(r"[0-9]+", display_name.lower()))
                 if original_numbers:
@@ -95,7 +101,6 @@ def check_with_nominatim(address: str) -> Union[float, str, dict]:
         # If no results pass the filters, return 0.0
         if len(filtered_results) == 0:
             return 0.0
-        
         # Calculate bounding box areas for all results (not just filtered)
         areas_data = compute_bounding_box_areas_meters(results)
         
@@ -131,29 +136,30 @@ def check_with_nominatim(address: str) -> Union[float, str, dict]:
         #     "total_area": total_area,
         #     "areas_data": areas_data
         # }
+        
         return score
     except requests.exceptions.Timeout:
-        # print(f"API timeout for address: {address}")
+        print(f"API timeout for address: {address}")
         return 0.0 
     except requests.exceptions.RequestException as e:
-        # print(f"Request exception for address '{address}': {type(e).__name__}: {str(e)}")
+        print(f"Request exception for address '{address}': {type(e).__name__}: {str(e)}")
         return 0.0
     except ValueError as e:
         error_msg = str(e)
         if "codec" in error_msg.lower() and "encode" in error_msg.lower():
-            # print(f"Encoding error for address '{address}' (treating as timeout): {error_msg}")
+            print(f"Encoding error for address '{address}' (treating as timeout): {error_msg}")
             return 0.0 
         else:
-            # print(f"ValueError (likely JSON parsing) for address '{address}': {error_msg}")
+            print(f"ValueError (likely JSON parsing) for address '{address}': {error_msg}")
             return 0.0
     except Exception as e:
-        # print(f"Unexpected exception for address '{address}': {type(e).__name__}: {str(e)}")
+        print(f"Unexpected exception for address '{address}': {type(e).__name__}: {str(e)}")
         return 0.0
 
 
 
 if __name__ == "__main__":
-    address = "136, 3rd Microrayan Road, Macroreyan 3, 9th District, Kabul, Kabul District, Kabul Province, 1002, Afghanistan"
+    address = "M S Osbourne Insurance Office, Brades Road, Carr's Bay, Brades, Saint Peter, Montserrat"
     
     result = check_with_nominatim(address)
     

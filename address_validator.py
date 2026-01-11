@@ -182,7 +182,7 @@ class AddressValidator:
             logger.warning(f"Bbox calculation failed: {e}")
             return 0.3
     
-    def save_address(self, address_data: Dict):
+    def save_address(self, address_data: Dict, score):
         """Save validated address to database using upsert to handle duplicates"""
         try:
             # Use upsert with address field to handle duplicate addresses
@@ -191,7 +191,7 @@ class AddressValidator:
                 {'$set': address_data},                # Update/insert data
                 upsert=True                            # Create if doesn't exist
             )
-            print(f"\n{address_data['address']}")
+            print(f"\n{address_data['address']} : {score}")
         except Exception as e:
             logger.error(f"Error saving address {address_data.get('osm_id', 'unknown')}: {e}")
             raise
@@ -355,6 +355,9 @@ class AddressValidator:
                     display_name = display_name.replace('East Timor', 'Timor Leste')
                 case "Maldives":
                     display_name = display_name.replace('é', 'e')
+                case "Montserrat"
+                    postcode = result.get('address', {}).get('postcode', '')
+                    display_name = display_name.replace(postcode, '')
                 case _:
                     nominatim_country = country_name
             
@@ -374,6 +377,7 @@ class AddressValidator:
                 print("failed looks_like_address")
                 continue
             # print(display_name)
+            # print(nominatim_country)
             if not validate_address_region(display_name, nominatim_country):
                 print("failed validate_address_region")
                 continue
@@ -392,9 +396,9 @@ class AddressValidator:
             score = check_with_nominatim(display_name)
             
             if score < 0.9:
-                print("failed with score < 0.9")
+                print(f"{ score } failed with score < 0.9")
                 continue
-            
+
             # Save address
             address_data = {
                 'osm_id': osm_id,
@@ -406,7 +410,7 @@ class AddressValidator:
                 'address': display_name  # Add this field to satisfy the existing index
             }
             
-            self.save_address(address_data)
+            self.save_address(address_data, score)
             stats['saved'] += 1
             
             # Rate limiting - be nice to Nominatim
