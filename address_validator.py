@@ -355,7 +355,7 @@ class AddressValidator:
                     display_name = display_name.replace('East Timor', 'Timor Leste')
                 case "Maldives":
                     display_name = display_name.replace('é', 'e')
-                case "Montserrat"
+                case "Montserrat":
                     postcode = result.get('address', {}).get('postcode', '')
                     display_name = display_name.replace(postcode, '')
                 case _:
