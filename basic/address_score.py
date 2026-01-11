@@ -94,6 +94,7 @@ def check_with_nominatim(address: str) -> Union[float, str, dict]:
                 if original_numbers:
                     # Ensure display numbers exactly match original numbers (no new numbers, no missing numbers)
                     if display_numbers != original_numbers:
+                        print("don't match numbers")
                         continue
             
             filtered_results.append(result)
@@ -159,7 +160,7 @@ def check_with_nominatim(address: str) -> Union[float, str, dict]:
 
 
 if __name__ == "__main__":
-    address = "M S Osbourne Insurance Office, Brades Road, Carr's Bay, Brades, Saint Peter, Montserrat"
+    address = "Farara Plaza, 7, Brades Road, Carr's Bay, Brades, Saint Peter, Montserrat"
     
     result = check_with_nominatim(address)
     
