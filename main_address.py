@@ -2,6 +2,7 @@
 """
 Main Address Processor
 Loops through countries in country.json and processes addresses using address_validator.py
+If no batches found for a country, saves country name to JSON file
 
 Requirements: pip install pymongo requests
 Usage: python main_address.py
@@ -11,6 +12,7 @@ import json
 import sys
 import time
 import logging
+import os
 
 # Import the address validator
 from address_validator import AddressValidator
@@ -23,6 +25,7 @@ class MainAddressProcessor:
     
     def __init__(self):
         self.validator = AddressValidator()
+        self.countries_without_batches = []
         
     def load_countries(self):
         """Load countries from country.json"""
@@ -34,6 +37,17 @@ class MainAddressProcessor:
         except Exception as e:
             logger.error(f"Error loading country.json: {e}")
             return []
+    
+    def save_countries_without_batches(self):
+        """Save countries without batches to JSON file"""
+        if self.countries_without_batches:
+            output_file = 'countries_without_batches.json'
+            try:
+                with open(output_file, 'w', encoding='utf-8') as f:
+                    json.dump(self.countries_without_batches, f, indent=2, ensure_ascii=False)
+                print(f"💾 Saved {len(self.countries_without_batches)} countries without batches to {output_file}")
+            except Exception as e:
+                logger.error(f"Error saving countries without batches: {e}")
     
     def process_all_countries(self):
         """Process addresses for all countries with limit 1"""
@@ -50,17 +64,27 @@ class MainAddressProcessor:
         stats = {
             'processed': 0,
             'successful': 0,
-            'failed': 0
+            'failed': 0,
+            'no_batches': 0
         }
         
         for i, country_name in enumerate(countries, 1):
             print(f"\n🔄 Processing {i}/{len(countries)}: {country_name}")
             
             try:
-                # Process country with limit 1
-                self.validator.process_country(country_name, limit=2)
-                stats['successful'] += 1
-                print(f"✅ Completed: {country_name}")
+                # First check if country has batches
+                batches = self.validator.get_address_batches(country_name, limit=1)
+                
+                if not batches:
+                    # No batches found for this country
+                    print(f"📭 No batches found for: {country_name}")
+                    self.countries_without_batches.append(country_name)
+                    stats['no_batches'] += 1
+                else:
+                    # Process country with limit 2
+                    self.validator.process_country(country_name, limit=2)
+                    stats['successful'] += 1
+                    print(f"✅ Completed: {country_name}")
                 
             except Exception as e:
                 logger.error(f"Failed to process {country_name}: {e}")
@@ -72,10 +96,21 @@ class MainAddressProcessor:
             # Small delay between countries
             time.sleep(1)
         
+        # Save countries without batches to JSON file
+        self.save_countries_without_batches()
+        
         print(f"\n\n✅ All countries processed!")
         print(f"📊 Total processed: {stats['processed']}")
         print(f"✅ Successful: {stats['successful']}")
         print(f"❌ Failed: {stats['failed']}")
+        print(f"📭 No batches: {stats['no_batches']}")
+        
+        if self.countries_without_batches:
+            print(f"\n📋 Countries without batches ({len(self.countries_without_batches)}):")
+            for country in self.countries_without_batches[:10]:  # Show first 10
+                print(f"  - {country}")
+            if len(self.countries_without_batches) > 10:
+                print(f"  ... and {len(self.countries_without_batches) - 10} more")
     
     def close(self):
         """Close validator connection"""
