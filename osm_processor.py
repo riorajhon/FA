@@ -44,17 +44,22 @@ class OSMAddressProcessor(osmium.SimpleHandler):
     def node(self, n):
         if 'addr:housenumber' in n.tags:
             self._add_address(f'N{n.id}')
+            print("____________")
+            for i,v in n.tags:
+                print(i,v)
+            print("____________")
+                
         self._update_progress()
             
-    def way(self, w):
-        if 'addr:housenumber' in w.tags:
-            self._add_address(f'W{w.id}')
-        self._update_progress()
+    # def way(self, w):
+    #     if 'addr:housenumber' in w.tags:
+    #         self._add_address(f'W{w.id}')
+    #     self._update_progress()
             
-    def relation(self, r):
-        if 'addr:housenumber' in r.tags:
-            self._add_address(f'R{r.id}')
-        self._update_progress()
+    # def relation(self, r):
+    #     if 'addr:housenumber' in r.tags:
+    #         self._add_address(f'R{r.id}')
+    #     self._update_progress()
     
     def _update_progress(self):
         """Update file processing progress"""

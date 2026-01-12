@@ -76,7 +76,9 @@ class BatchFirstSectionProcessor:
                 {"first_section": None}
             ]
         }
+        # cursor = self.collection.find(query)
         cursor = self.collection.find(query).skip(skip).limit(self.batch_size)
+        
         
         addresses = list(cursor)
         if not addresses:

@@ -1,0 +1,1229 @@
+{
+  "generated_at": "2026-01-12T05:54:55.248449",
+  "total_countries": 199,
+  "low_count_threshold": 15,
+  "countries_with_low_count": 4,
+  "countries_with_adequate_count": 195,
+  "low_count_countries": [
+    {
+      "country": "Bonaire, Saint Eustatius and Saba",
+      "unique_first_sections": 0,
+      "total_addresses": 0,
+      "is_low_count": true
+    },
+    {
+      "country": "Djibouti",
+      "unique_first_sections": 14,
+      "total_addresses": 15,
+      "is_low_count": true
+    },
+    {
+      "country": "Montserrat",
+      "unique_first_sections": 0,
+      "total_addresses": 0,
+      "is_low_count": true
+    },
+    {
+      "country": "North Korea",
+      "unique_first_sections": 0,
+      "total_addresses": 0,
+      "is_low_count": true
+    }
+  ],
+  "all_results": [
+    {
+      "country": "Afghanistan",
+      "unique_first_sections": 35,
+      "total_addresses": 42,
+      "is_low_count": false
+    },
+    {
+      "country": "Albania",
+      "unique_first_sections": 67,
+      "total_addresses": 71,
+      "is_low_count": false
+    },
+    {
+      "country": "Algeria",
+      "unique_first_sections": 40,
+      "total_addresses": 86,
+      "is_low_count": false
+    },
+    {
+      "country": "Andorra",
+      "unique_first_sections": 83,
+      "total_addresses": 91,
+      "is_low_count": false
+    },
+    {
+      "country": "Angola",
+      "unique_first_sections": 781,
+      "total_addresses": 1338,
+      "is_low_count": false
+    },
+    {
+      "country": "Argentina",
+      "unique_first_sections": 885,
+      "total_addresses": 1083,
+      "is_low_count": false
+    },
+    {
+      "country": "Armenia",
+      "unique_first_sections": 28,
+      "total_addresses": 31,
+      "is_low_count": false
+    },
+    {
+      "country": "Aruba",
+      "unique_first_sections": 535,
+      "total_addresses": 781,
+      "is_low_count": false
+    },
+    {
+      "country": "Australia",
+      "unique_first_sections": 655,
+      "total_addresses": 1056,
+      "is_low_count": false
+    },
+    {
+      "country": "Austria",
+      "unique_first_sections": 65,
+      "total_addresses": 73,
+      "is_low_count": false
+    },
+    {
+      "country": "Azerbaijan",
+      "unique_first_sections": 78,
+      "total_addresses": 86,
+      "is_low_count": false
+    },
+    {
+      "country": "Bahamas",
+      "unique_first_sections": 424,
+      "total_addresses": 1250,
+      "is_low_count": false
+    },
+    {
+      "country": "Bahrain",
+      "unique_first_sections": 163,
+      "total_addresses": 169,
+      "is_low_count": false
+    },
+    {
+      "country": "Bangladesh",
+      "unique_first_sections": 560,
+      "total_addresses": 597,
+      "is_low_count": false
+    },
+    {
+      "country": "Belarus",
+      "unique_first_sections": 55,
+      "total_addresses": 60,
+      "is_low_count": false
+    },
+    {
+      "country": "Belgium",
+      "unique_first_sections": 68,
+      "total_addresses": 83,
+      "is_low_count": false
+    },
+    {
+      "country": "Belize",
+      "unique_first_sections": 467,
+      "total_addresses": 601,
+      "is_low_count": false
+    },
+    {
+      "country": "Benin",
+      "unique_first_sections": 780,
+      "total_addresses": 883,
+      "is_low_count": false
+    },
+    {
+      "country": "Bhutan",
+      "unique_first_sections": 708,
+      "total_addresses": 1236,
+      "is_low_count": false
+    },
+    {
+      "country": "Bolivia",
+      "unique_first_sections": 1338,
+      "total_addresses": 1399,
+      "is_low_count": false
+    },
+    {
+      "country": "Bonaire, Saint Eustatius and Saba",
+      "unique_first_sections": 0,
+      "total_addresses": 0,
+      "is_low_count": true
+    },
+    {
+      "country": "Bosnia and Herzegovina",
+      "unique_first_sections": 84,
+      "total_addresses": 89,
+      "is_low_count": false
+    },
+    {
+      "country": "Botswana",
+      "unique_first_sections": 81,
+      "total_addresses": 84,
+      "is_low_count": false
+    },
+    {
+      "country": "Brazil",
+      "unique_first_sections": 804,
+      "total_addresses": 964,
+      "is_low_count": false
+    },
+    {
+      "country": "British Virgin Islands",
+      "unique_first_sections": 50,
+      "total_addresses": 51,
+      "is_low_count": false
+    },
+    {
+      "country": "Brunei",
+      "unique_first_sections": 29,
+      "total_addresses": 129,
+      "is_low_count": false
+    },
+    {
+      "country": "Bulgaria",
+      "unique_first_sections": 77,
+      "total_addresses": 79,
+      "is_low_count": false
+    },
+    {
+      "country": "Burkina Faso",
+      "unique_first_sections": 108,
+      "total_addresses": 141,
+      "is_low_count": false
+    },
+    {
+      "country": "Burundi",
+      "unique_first_sections": 87,
+      "total_addresses": 170,
+      "is_low_count": false
+    },
+    {
+      "country": "Cabo Verde",
+      "unique_first_sections": 67,
+      "total_addresses": 72,
+      "is_low_count": false
+    },
+    {
+      "country": "Cambodia",
+      "unique_first_sections": 130,
+      "total_addresses": 133,
+      "is_low_count": false
+    },
+    {
+      "country": "Cameroon",
+      "unique_first_sections": 333,
+      "total_addresses": 394,
+      "is_low_count": false
+    },
+    {
+      "country": "Canada",
+      "unique_first_sections": 70,
+      "total_addresses": 77,
+      "is_low_count": false
+    },
+    {
+      "country": "Cayman Islands",
+      "unique_first_sections": 303,
+      "total_addresses": 352,
+      "is_low_count": false
+    },
+    {
+      "country": "Central African Republic",
+      "unique_first_sections": 47,
+      "total_addresses": 59,
+      "is_low_count": false
+    },
+    {
+      "country": "Chad",
+      "unique_first_sections": 41,
+      "total_addresses": 53,
+      "is_low_count": false
+    },
+    {
+      "country": "Chile",
+      "unique_first_sections": 70,
+      "total_addresses": 88,
+      "is_low_count": false
+    },
+    {
+      "country": "China",
+      "unique_first_sections": 314,
+      "total_addresses": 422,
+      "is_low_count": false
+    },
+    {
+      "country": "Colombia",
+      "unique_first_sections": 422,
+      "total_addresses": 441,
+      "is_low_count": false
+    },
+    {
+      "country": "Comoros",
+      "unique_first_sections": 15,
+      "total_addresses": 16,
+      "is_low_count": false
+    },
+    {
+      "country": "Costa Rica",
+      "unique_first_sections": 215,
+      "total_addresses": 221,
+      "is_low_count": false
+    },
+    {
+      "country": "Crimea",
+      "unique_first_sections": 53,
+      "total_addresses": 87,
+      "is_low_count": false
+    },
+    {
+      "country": "Croatia",
+      "unique_first_sections": 42,
+      "total_addresses": 58,
+      "is_low_count": false
+    },
+    {
+      "country": "Cuba",
+      "unique_first_sections": 1327,
+      "total_addresses": 1377,
+      "is_low_count": false
+    },
+    {
+      "country": "Curacao",
+      "unique_first_sections": 179,
+      "total_addresses": 336,
+      "is_low_count": false
+    },
+    {
+      "country": "Cyprus",
+      "unique_first_sections": 983,
+      "total_addresses": 1180,
+      "is_low_count": false
+    },
+    {
+      "country": "Czechia",
+      "unique_first_sections": 48,
+      "total_addresses": 51,
+      "is_low_count": false
+    },
+    {
+      "country": "Democratic Republic of the Congo",
+      "unique_first_sections": 1257,
+      "total_addresses": 1407,
+      "is_low_count": false
+    },
+    {
+      "country": "Denmark",
+      "unique_first_sections": 39,
+      "total_addresses": 298,
+      "is_low_count": false
+    },
+    {
+      "country": "Djibouti",
+      "unique_first_sections": 14,
+      "total_addresses": 15,
+      "is_low_count": true
+    },
+    {
+      "country": "Dominican Republic",
+      "unique_first_sections": 532,
+      "total_addresses": 587,
+      "is_low_count": false
+    },
+    {
+      "country": "Donetsk",
+      "unique_first_sections": 327,
+      "total_addresses": 688,
+      "is_low_count": false
+    },
+    {
+      "country": "Ecuador",
+      "unique_first_sections": 1224,
+      "total_addresses": 1411,
+      "is_low_count": false
+    },
+    {
+      "country": "Egypt",
+      "unique_first_sections": 745,
+      "total_addresses": 1339,
+      "is_low_count": false
+    },
+    {
+      "country": "El Salvador",
+      "unique_first_sections": 828,
+      "total_addresses": 1120,
+      "is_low_count": false
+    },
+    {
+      "country": "Equatorial Guinea",
+      "unique_first_sections": 21,
+      "total_addresses": 21,
+      "is_low_count": false
+    },
+    {
+      "country": "Eritrea",
+      "unique_first_sections": 18,
+      "total_addresses": 19,
+      "is_low_count": false
+    },
+    {
+      "country": "Estonia",
+      "unique_first_sections": 53,
+      "total_addresses": 57,
+      "is_low_count": false
+    },
+    {
+      "country": "Eswatini",
+      "unique_first_sections": 112,
+      "total_addresses": 870,
+      "is_low_count": false
+    },
+    {
+      "country": "Ethiopia",
+      "unique_first_sections": 540,
+      "total_addresses": 626,
+      "is_low_count": false
+    },
+    {
+      "country": "Fiji",
+      "unique_first_sections": 414,
+      "total_addresses": 663,
+      "is_low_count": false
+    },
+    {
+      "country": "Finland",
+      "unique_first_sections": 83,
+      "total_addresses": 87,
+      "is_low_count": false
+    },
+    {
+      "country": "France",
+      "unique_first_sections": 57,
+      "total_addresses": 93,
+      "is_low_count": false
+    },
+    {
+      "country": "French Guiana",
+      "unique_first_sections": 1374,
+      "total_addresses": 2332,
+      "is_low_count": false
+    },
+    {
+      "country": "French Polynesia",
+      "unique_first_sections": 139,
+      "total_addresses": 194,
+      "is_low_count": false
+    },
+    {
+      "country": "Gabon",
+      "unique_first_sections": 1255,
+      "total_addresses": 1400,
+      "is_low_count": false
+    },
+    {
+      "country": "Gambia",
+      "unique_first_sections": 21,
+      "total_addresses": 21,
+      "is_low_count": false
+    },
+    {
+      "country": "Georgia",
+      "unique_first_sections": 15,
+      "total_addresses": 15,
+      "is_low_count": false
+    },
+    {
+      "country": "Germany",
+      "unique_first_sections": 74,
+      "total_addresses": 80,
+      "is_low_count": false
+    },
+    {
+      "country": "Ghana",
+      "unique_first_sections": 182,
+      "total_addresses": 525,
+      "is_low_count": false
+    },
+    {
+      "country": "Greece",
+      "unique_first_sections": 48,
+      "total_addresses": 83,
+      "is_low_count": false
+    },
+    {
+      "country": "Guadeloupe",
+      "unique_first_sections": 899,
+      "total_addresses": 2369,
+      "is_low_count": false
+    },
+    {
+      "country": "Guam",
+      "unique_first_sections": 2330,
+      "total_addresses": 2378,
+      "is_low_count": false
+    },
+    {
+      "country": "Guatemala",
+      "unique_first_sections": 1253,
+      "total_addresses": 1443,
+      "is_low_count": false
+    },
+    {
+      "country": "Guinea",
+      "unique_first_sections": 58,
+      "total_addresses": 103,
+      "is_low_count": false
+    },
+    {
+      "country": "Guinea-Bissau",
+      "unique_first_sections": 20,
+      "total_addresses": 20,
+      "is_low_count": false
+    },
+    {
+      "country": "Guyana",
+      "unique_first_sections": 339,
+      "total_addresses": 433,
+      "is_low_count": false
+    },
+    {
+      "country": "Haiti",
+      "unique_first_sections": 775,
+      "total_addresses": 996,
+      "is_low_count": false
+    },
+    {
+      "country": "Honduras",
+      "unique_first_sections": 341,
+      "total_addresses": 428,
+      "is_low_count": false
+    },
+    {
+      "country": "Hong Kong",
+      "unique_first_sections": 1031,
+      "total_addresses": 1199,
+      "is_low_count": false
+    },
+    {
+      "country": "Hungary",
+      "unique_first_sections": 16,
+      "total_addresses": 18,
+      "is_low_count": false
+    },
+    {
+      "country": "Iceland",
+      "unique_first_sections": 30,
+      "total_addresses": 31,
+      "is_low_count": false
+    },
+    {
+      "country": "India",
+      "unique_first_sections": 793,
+      "total_addresses": 1041,
+      "is_low_count": false
+    },
+    {
+      "country": "Indonesia",
+      "unique_first_sections": 377,
+      "total_addresses": 590,
+      "is_low_count": false
+    },
+    {
+      "country": "Iran",
+      "unique_first_sections": 138,
+      "total_addresses": 139,
+      "is_low_count": false
+    },
+    {
+      "country": "Iraq",
+      "unique_first_sections": 269,
+      "total_addresses": 273,
+      "is_low_count": false
+    },
+    {
+      "country": "Ireland",
+      "unique_first_sections": 64,
+      "total_addresses": 68,
+      "is_low_count": false
+    },
+    {
+      "country": "Israel",
+      "unique_first_sections": 321,
+      "total_addresses": 1430,
+      "is_low_count": false
+    },
+    {
+      "country": "Italy",
+      "unique_first_sections": 85,
+      "total_addresses": 94,
+      "is_low_count": false
+    },
+    {
+      "country": "Ivory Coast",
+      "unique_first_sections": 1122,
+      "total_addresses": 1400,
+      "is_low_count": false
+    },
+    {
+      "country": "Jamaica",
+      "unique_first_sections": 517,
+      "total_addresses": 849,
+      "is_low_count": false
+    },
+    {
+      "country": "Japan",
+      "unique_first_sections": 168,
+      "total_addresses": 172,
+      "is_low_count": false
+    },
+    {
+      "country": "Jordan",
+      "unique_first_sections": 716,
+      "total_addresses": 1279,
+      "is_low_count": false
+    },
+    {
+      "country": "Kazakhstan",
+      "unique_first_sections": 48,
+      "total_addresses": 57,
+      "is_low_count": false
+    },
+    {
+      "country": "Kenya",
+      "unique_first_sections": 463,
+      "total_addresses": 563,
+      "is_low_count": false
+    },
+    {
+      "country": "Kosovo",
+      "unique_first_sections": 61,
+      "total_addresses": 62,
+      "is_low_count": false
+    },
+    {
+      "country": "Kuwait",
+      "unique_first_sections": 16,
+      "total_addresses": 98,
+      "is_low_count": false
+    },
+    {
+      "country": "Kyrgyzstan",
+      "unique_first_sections": 72,
+      "total_addresses": 75,
+      "is_low_count": false
+    },
+    {
+      "country": "Laos",
+      "unique_first_sections": 200,
+      "total_addresses": 202,
+      "is_low_count": false
+    },
+    {
+      "country": "Latvia",
+      "unique_first_sections": 49,
+      "total_addresses": 55,
+      "is_low_count": false
+    },
+    {
+      "country": "Lebanon",
+      "unique_first_sections": 321,
+      "total_addresses": 397,
+      "is_low_count": false
+    },
+    {
+      "country": "Lesotho",
+      "unique_first_sections": 128,
+      "total_addresses": 160,
+      "is_low_count": false
+    },
+    {
+      "country": "Liberia",
+      "unique_first_sections": 24,
+      "total_addresses": 24,
+      "is_low_count": false
+    },
+    {
+      "country": "Libya",
+      "unique_first_sections": 167,
+      "total_addresses": 188,
+      "is_low_count": false
+    },
+    {
+      "country": "Lithuania",
+      "unique_first_sections": 55,
+      "total_addresses": 62,
+      "is_low_count": false
+    },
+    {
+      "country": "Luhansk",
+      "unique_first_sections": 133,
+      "total_addresses": 456,
+      "is_low_count": false
+    },
+    {
+      "country": "Luxembourg",
+      "unique_first_sections": 59,
+      "total_addresses": 80,
+      "is_low_count": false
+    },
+    {
+      "country": "Macao",
+      "unique_first_sections": 1083,
+      "total_addresses": 2190,
+      "is_low_count": false
+    },
+    {
+      "country": "Madagascar",
+      "unique_first_sections": 480,
+      "total_addresses": 680,
+      "is_low_count": false
+    },
+    {
+      "country": "Malawi",
+      "unique_first_sections": 132,
+      "total_addresses": 181,
+      "is_low_count": false
+    },
+    {
+      "country": "Malaysia",
+      "unique_first_sections": 1074,
+      "total_addresses": 1199,
+      "is_low_count": false
+    },
+    {
+      "country": "Mali",
+      "unique_first_sections": 128,
+      "total_addresses": 132,
+      "is_low_count": false
+    },
+    {
+      "country": "Malta",
+      "unique_first_sections": 19,
+      "total_addresses": 26,
+      "is_low_count": false
+    },
+    {
+      "country": "Martinique",
+      "unique_first_sections": 170,
+      "total_addresses": 1225,
+      "is_low_count": false
+    },
+    {
+      "country": "Mauritania",
+      "unique_first_sections": 30,
+      "total_addresses": 30,
+      "is_low_count": false
+    },
+    {
+      "country": "Mauritius",
+      "unique_first_sections": 170,
+      "total_addresses": 180,
+      "is_low_count": false
+    },
+    {
+      "country": "Mayotte",
+      "unique_first_sections": 73,
+      "total_addresses": 347,
+      "is_low_count": false
+    },
+    {
+      "country": "Mexico",
+      "unique_first_sections": 1193,
+      "total_addresses": 1398,
+      "is_low_count": false
+    },
+    {
+      "country": "Moldova",
+      "unique_first_sections": 20,
+      "total_addresses": 22,
+      "is_low_count": false
+    },
+    {
+      "country": "Monaco",
+      "unique_first_sections": 86,
+      "total_addresses": 90,
+      "is_low_count": false
+    },
+    {
+      "country": "Mongolia",
+      "unique_first_sections": 97,
+      "total_addresses": 101,
+      "is_low_count": false
+    },
+    {
+      "country": "Montenegro",
+      "unique_first_sections": 51,
+      "total_addresses": 86,
+      "is_low_count": false
+    },
+    {
+      "country": "Montserrat",
+      "unique_first_sections": 0,
+      "total_addresses": 0,
+      "is_low_count": true
+    },
+    {
+      "country": "Morocco",
+      "unique_first_sections": 993,
+      "total_addresses": 1035,
+      "is_low_count": false
+    },
+    {
+      "country": "Mozambique",
+      "unique_first_sections": 502,
+      "total_addresses": 1039,
+      "is_low_count": false
+    },
+    {
+      "country": "Myanmar",
+      "unique_first_sections": 539,
+      "total_addresses": 561,
+      "is_low_count": false
+    },
+    {
+      "country": "Namibia",
+      "unique_first_sections": 448,
+      "total_addresses": 573,
+      "is_low_count": false
+    },
+    {
+      "country": "Nepal",
+      "unique_first_sections": 696,
+      "total_addresses": 708,
+      "is_low_count": false
+    },
+    {
+      "country": "New Caledonia",
+      "unique_first_sections": 216,
+      "total_addresses": 609,
+      "is_low_count": false
+    },
+    {
+      "country": "New Zealand",
+      "unique_first_sections": 78,
+      "total_addresses": 81,
+      "is_low_count": false
+    },
+    {
+      "country": "Nicaragua",
+      "unique_first_sections": 511,
+      "total_addresses": 634,
+      "is_low_count": false
+    },
+    {
+      "country": "Niger",
+      "unique_first_sections": 62,
+      "total_addresses": 64,
+      "is_low_count": false
+    },
+    {
+      "country": "Nigeria",
+      "unique_first_sections": 613,
+      "total_addresses": 1161,
+      "is_low_count": false
+    },
+    {
+      "country": "North Korea",
+      "unique_first_sections": 0,
+      "total_addresses": 0,
+      "is_low_count": true
+    },
+    {
+      "country": "North Macedonia",
+      "unique_first_sections": 45,
+      "total_addresses": 59,
+      "is_low_count": false
+    },
+    {
+      "country": "Norway",
+      "unique_first_sections": 49,
+      "total_addresses": 98,
+      "is_low_count": false
+    },
+    {
+      "country": "Oman",
+      "unique_first_sections": 415,
+      "total_addresses": 479,
+      "is_low_count": false
+    },
+    {
+      "country": "Pakistan",
+      "unique_first_sections": 797,
+      "total_addresses": 1205,
+      "is_low_count": false
+    },
+    {
+      "country": "Palestinian Territory",
+      "unique_first_sections": 518,
+      "total_addresses": 536,
+      "is_low_count": false
+    },
+    {
+      "country": "Panama",
+      "unique_first_sections": 683,
+      "total_addresses": 1024,
+      "is_low_count": false
+    },
+    {
+      "country": "Papua New Guinea",
+      "unique_first_sections": 39,
+      "total_addresses": 52,
+      "is_low_count": false
+    },
+    {
+      "country": "Paraguay",
+      "unique_first_sections": 157,
+      "total_addresses": 160,
+      "is_low_count": false
+    },
+    {
+      "country": "Peru",
+      "unique_first_sections": 1345,
+      "total_addresses": 1449,
+      "is_low_count": false
+    },
+    {
+      "country": "Philippines",
+      "unique_first_sections": 689,
+      "total_addresses": 1203,
+      "is_low_count": false
+    },
+    {
+      "country": "Poland",
+      "unique_first_sections": 128,
+      "total_addresses": 153,
+      "is_low_count": false
+    },
+    {
+      "country": "Portugal",
+      "unique_first_sections": 189,
+      "total_addresses": 193,
+      "is_low_count": false
+    },
+    {
+      "country": "Puerto Rico",
+      "unique_first_sections": 1601,
+      "total_addresses": 1647,
+      "is_low_count": false
+    },
+    {
+      "country": "Qatar",
+      "unique_first_sections": 128,
+      "total_addresses": 244,
+      "is_low_count": false
+    },
+    {
+      "country": "Republic of the Congo",
+      "unique_first_sections": 157,
+      "total_addresses": 260,
+      "is_low_count": false
+    },
+    {
+      "country": "Reunion",
+      "unique_first_sections": 702,
+      "total_addresses": 1794,
+      "is_low_count": false
+    },
+    {
+      "country": "Romania",
+      "unique_first_sections": 59,
+      "total_addresses": 64,
+      "is_low_count": false
+    },
+    {
+      "country": "Russia",
+      "unique_first_sections": 56,
+      "total_addresses": 64,
+      "is_low_count": false
+    },
+    {
+      "country": "Rwanda",
+      "unique_first_sections": 231,
+      "total_addresses": 672,
+      "is_low_count": false
+    },
+    {
+      "country": "Saint Lucia",
+      "unique_first_sections": 23,
+      "total_addresses": 27,
+      "is_low_count": false
+    },
+    {
+      "country": "Saint Vincent and the Grenadines",
+      "unique_first_sections": 27,
+      "total_addresses": 27,
+      "is_low_count": false
+    },
+    {
+      "country": "Saudi Arabia",
+      "unique_first_sections": 761,
+      "total_addresses": 763,
+      "is_low_count": false
+    },
+    {
+      "country": "Senegal",
+      "unique_first_sections": 1097,
+      "total_addresses": 1483,
+      "is_low_count": false
+    },
+    {
+      "country": "Serbia",
+      "unique_first_sections": 64,
+      "total_addresses": 89,
+      "is_low_count": false
+    },
+    {
+      "country": "Sierra Leone",
+      "unique_first_sections": 396,
+      "total_addresses": 442,
+      "is_low_count": false
+    },
+    {
+      "country": "Singapore",
+      "unique_first_sections": 285,
+      "total_addresses": 392,
+      "is_low_count": false
+    },
+    {
+      "country": "Slovakia",
+      "unique_first_sections": 86,
+      "total_addresses": 92,
+      "is_low_count": false
+    },
+    {
+      "country": "Slovenia",
+      "unique_first_sections": 47,
+      "total_addresses": 50,
+      "is_low_count": false
+    },
+    {
+      "country": "Somalia",
+      "unique_first_sections": 22,
+      "total_addresses": 23,
+      "is_low_count": false
+    },
+    {
+      "country": "South Africa",
+      "unique_first_sections": 662,
+      "total_addresses": 941,
+      "is_low_count": false
+    },
+    {
+      "country": "South Korea",
+      "unique_first_sections": 26,
+      "total_addresses": 27,
+      "is_low_count": false
+    },
+    {
+      "country": "South Sudan",
+      "unique_first_sections": 29,
+      "total_addresses": 29,
+      "is_low_count": false
+    },
+    {
+      "country": "Spain",
+      "unique_first_sections": 86,
+      "total_addresses": 89,
+      "is_low_count": false
+    },
+    {
+      "country": "Sri Lanka",
+      "unique_first_sections": 371,
+      "total_addresses": 443,
+      "is_low_count": false
+    },
+    {
+      "country": "Sudan",
+      "unique_first_sections": 82,
+      "total_addresses": 92,
+      "is_low_count": false
+    },
+    {
+      "country": "Suriname",
+      "unique_first_sections": 277,
+      "total_addresses": 297,
+      "is_low_count": false
+    },
+    {
+      "country": "Sweden",
+      "unique_first_sections": 85,
+      "total_addresses": 91,
+      "is_low_count": false
+    },
+    {
+      "country": "Switzerland",
+      "unique_first_sections": 54,
+      "total_addresses": 58,
+      "is_low_count": false
+    },
+    {
+      "country": "Syria",
+      "unique_first_sections": 63,
+      "total_addresses": 92,
+      "is_low_count": false
+    },
+    {
+      "country": "Taiwan",
+      "unique_first_sections": 177,
+      "total_addresses": 262,
+      "is_low_count": false
+    },
+    {
+      "country": "Tajikistan",
+      "unique_first_sections": 61,
+      "total_addresses": 83,
+      "is_low_count": false
+    },
+    {
+      "country": "Tanzania",
+      "unique_first_sections": 787,
+      "total_addresses": 821,
+      "is_low_count": false
+    },
+    {
+      "country": "Thailand",
+      "unique_first_sections": 94,
+      "total_addresses": 109,
+      "is_low_count": false
+    },
+    {
+      "country": "The Netherlands",
+      "unique_first_sections": 1315,
+      "total_addresses": 1666,
+      "is_low_count": false
+    },
+    {
+      "country": "Timor Leste",
+      "unique_first_sections": 52,
+      "total_addresses": 53,
+      "is_low_count": false
+    },
+    {
+      "country": "Togo",
+      "unique_first_sections": 132,
+      "total_addresses": 135,
+      "is_low_count": false
+    },
+    {
+      "country": "Trinidad and Tobago",
+      "unique_first_sections": 511,
+      "total_addresses": 624,
+      "is_low_count": false
+    },
+    {
+      "country": "Tunisia",
+      "unique_first_sections": 26,
+      "total_addresses": 94,
+      "is_low_count": false
+    },
+    {
+      "country": "Turkey",
+      "unique_first_sections": 80,
+      "total_addresses": 90,
+      "is_low_count": false
+    },
+    {
+      "country": "Turkmenistan",
+      "unique_first_sections": 75,
+      "total_addresses": 76,
+      "is_low_count": false
+    },
+    {
+      "country": "Turks and Caicos Islands",
+      "unique_first_sections": 129,
+      "total_addresses": 204,
+      "is_low_count": false
+    },
+    {
+      "country": "U.S. Virgin Islands",
+      "unique_first_sections": 817,
+      "total_addresses": 1027,
+      "is_low_count": false
+    },
+    {
+      "country": "Uganda",
+      "unique_first_sections": 491,
+      "total_addresses": 794,
+      "is_low_count": false
+    },
+    {
+      "country": "Ukraine",
+      "unique_first_sections": 463,
+      "total_addresses": 936,
+      "is_low_count": false
+    },
+    {
+      "country": "United Arab Emirates",
+      "unique_first_sections": 1543,
+      "total_addresses": 4147,
+      "is_low_count": false
+    },
+    {
+      "country": "United Kingdom",
+      "unique_first_sections": 167,
+      "total_addresses": 185,
+      "is_low_count": false
+    },
+    {
+      "country": "United States",
+      "unique_first_sections": 546,
+      "total_addresses": 692,
+      "is_low_count": false
+    },
+    {
+      "country": "Uruguay",
+      "unique_first_sections": 706,
+      "total_addresses": 760,
+      "is_low_count": false
+    },
+    {
+      "country": "Uzbekistan",
+      "unique_first_sections": 121,
+      "total_addresses": 135,
+      "is_low_count": false
+    },
+    {
+      "country": "Venezuela",
+      "unique_first_sections": 404,
+      "total_addresses": 573,
+      "is_low_count": false
+    },
+    {
+      "country": "Vietnam",
+      "unique_first_sections": 586,
+      "total_addresses": 1004,
+      "is_low_count": false
+    },
+    {
+      "country": "Western Sahara",
+      "unique_first_sections": 33,
+      "total_addresses": 36,
+      "is_low_count": false
+    },
+    {
+      "country": "Yemen",
+      "unique_first_sections": 135,
+      "total_addresses": 136,
+      "is_low_count": false
+    },
+    {
+      "country": "Zambia",
+      "unique_first_sections": 801,
+      "total_addresses": 872,
+      "is_low_count": false
+    },
+    {
+      "country": "Zimbabwe",
+      "unique_first_sections": 755,
+      "total_addresses": 782,
+      "is_low_count": false
+    }
+  ]
+}
