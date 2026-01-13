@@ -16,6 +16,10 @@ import re
 from typing import Dict, List, Optional, Tuple
 from pymongo import MongoClient
 import logging
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Import validation functions from basic module
 import sys
@@ -30,7 +34,11 @@ logger = logging.getLogger(__name__)
 class AddressValidator:
     """Validates OSM addresses using Nominatim API"""
     
-    def __init__(self, mongodb_uri="mongodb://admin:fjkfjrj!20020415@localhost:27017/?authSource=admin"):
+    def __init__(self, mongodb_uri=None):
+        # Use environment variable or default
+        if mongodb_uri is None:
+            mongodb_uri = os.getenv('MONGODB_URI', 'mongodb://admin:fjkfjrj!20020415@localhost:27017/?authSource=admin')
+        
         self.client = MongoClient(mongodb_uri)
         self.db = self.client.osm_addresses
         self.batches_collection = self.db.address_batches
@@ -41,6 +49,10 @@ class AddressValidator:
             'User-Agent': 'OSM Address Validator/1.0',
             'Accept-Language': 'en'
         })
+        
+        # Initialize JSON file for special addresses
+        self.json_addresses = []
+        self.json_filename = "addresses_score1_low.json"
         
         self.territories = [
             "Martinique",
@@ -181,6 +193,24 @@ class AddressValidator:
         except Exception as e:
             logger.warning(f"Bbox calculation failed: {e}")
             return 0.3
+    
+    def save_address_to_json(self, address_data: Dict):
+        """Save address to JSON file for addresses with score_1=1 and score<1"""
+        try:
+            self.json_addresses.append(address_data)
+            print(f"📝 Saved to JSON: {address_data['address']} (score_1={address_data['score_1']}, score={address_data['score']})")
+        except Exception as e:
+            logger.error(f"Error saving address to JSON: {e}")
+    
+    def save_json_file(self):
+        """Save collected addresses to JSON file"""
+        if self.json_addresses:
+            try:
+                with open(self.json_filename, 'w', encoding='utf-8') as f:
+                    json.dump(self.json_addresses, f, indent=2, ensure_ascii=False)
+                logger.info(f"Saved {len(self.json_addresses)} addresses to {self.json_filename}")
+            except Exception as e:
+                logger.error(f"Error saving JSON file: {e}")
     
     def save_address(self, address_data: Dict, score):
         """Save validated address to database using upsert to handle duplicates"""
@@ -391,10 +421,17 @@ class AddressValidator:
             components = self.extract_address_components(result)
             
             # Calculate score from bounding box
-            # bbox = result.get('boundingbox', [])
-            # score = self.calculate_score(bbox) if len(bbox) == 4 else 0.3
+            bbox = result.get('boundingbox', [])
+            score_1 = self.calculate_score(bbox) if len(bbox) == 4 else 0.3
             score = check_with_nominatim(display_name)
             
+            # Check if we should save to JSON (score_1 = 1 AND score < 1)
+            should_save_to_json = (score_1 == 1.0 and score < 1.0)
+            
+            # Save to JSON if conditions are met
+            if should_save_to_json:
+                self.save_address_to_json(address_data)
+                
             if score < 0.9:
                 print(f"{ score } failed with score < 0.9")
                 continue
@@ -406,6 +443,7 @@ class AddressValidator:
                 'city': components['city'],
                 'street': components['street'],
                 'score': score,
+                'score_1': score_1,  # Add score_1 field
                 'status': 1,
                 'address': display_name  # Add this field to satisfy the existing index
             }
@@ -441,7 +479,12 @@ class AddressValidator:
             except Exception as e:
                 logger.error(f"Error processing batch {batch['_id']}: {e}")
         
+        # Save JSON file with special addresses
+        self.save_json_file()
+        
         print(f"Complete! Addresses saved: {total_saved}")
+        if self.json_addresses:
+            print(f"Special addresses (score_1=1, score<1) saved to {self.json_filename}: {len(self.json_addresses)}")
     
     def close(self):
         """Close database connection"""

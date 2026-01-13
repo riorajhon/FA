@@ -107,15 +107,20 @@ def calculate_address_duplicates_penalty(address_variations):
 
 if __name__ == "__main__":
     address = [
-    '6794 Jesus Orchard, Sanfordville, Quebec N7R2R6, Canada',
-    '6847 Hannah Parkways, Markhaven, Quebec M9K1L9, Canada',
-    '18236 Tiffany Road, Shelleyland, Prince Edward Island J5Y 5N5, Canada' ,    
-    '41488 Smith Islands, South Angel, Prince Edward Island K3P 4E3, Canada',    
-    '06415 Richard Lodge, West Davidmouth, Prince Edward Island E3L 9N8, Canada',
-    '340 Daniel Fords, Terrystad, Alberta E8A4H7, Canada',
-    '02316 Romero Via, Juliechester, Nova Scotia T9P8H5, Canada',
-    '9801 Lowery Pines, Lake Charlesburgh, Manitoba C9E 8V9, Canada',
-    '470 Travis Valley, East Jenniferfort, Nunavut E1M2N6, Canada',
-    '7348 Duffy Lock, Gravesberg, New Brunswick C1A 1Y2, Canada'
+    "Гостиница Холидэй ИНН, 189, 天津街, Qingniwaqiao Subdistrict, Zhongshan District, Ganjingzi, Liaoning, 116001, China",
+    "1944, 119, Shuguang Road, 白沙泉, Beishan Subdistrict, Xihu District, Hangzhou City, Zhejiang, 310007, China",
+    "479, 文三路, Cuiyuan, Xihu District, Hangzhou City, Zhejiang, 310012, China",
+    "444, Middle Jiangxi Road, Waitanyuan, Waitan Subdistrict, Shanghai, Huangpu District, Shanghai, 200002, China",
+    "Coco Club, 266, Wantang Road, Cuiyuan, Xihu District, Hangzhou City, Zhejiang, 310012, China",
+    "113, Shuguang Road, 白沙泉, Beishan Subdistrict, Xihu District, Hangzhou City, Zhejiang, 310007, China",
+    "302, Wenhui Road, Zhaohui, Gongshu District, Hangzhou City, Zhejiang, 310014, China",
+    "348, Wenhui Road, Zhaohui, Gongshu District, Hangzhou City, Zhejiang, 310014, China",
+    "108, Wenhui Road, 打铁关社区, Wenhui, Gongshu District, Hangzhou City, Zhejiang, 310014, China",
+    "196, Shangtang Road, Zhaohui, Gongshu District, Hangzhou City, Zhejiang, 310014, China",
+    "圣路易葡国餐厅(高新店), 25, Keji Road, Zhangba, Yanta District, Xi'an, Shaanxi, 710000, China",
+    "Mislead, 168, Baochu Road, Beishan Subdistrict, Xihu District, Hangzhou City, Zhejiang, 310028, China",
+    "247, 文三路, Cuiyuan, Xihu District, Hangzhou City, Zhejiang, 310028, China",
+    "浙江省旅游投资集团有限公司, 555, 文三路, Cuiyuan, Xihu District, Hangzhou City, Zhejiang, 310012, China",
+    "德珈超市, 371, Wen'er Road West, 德加社区, 文新街道, Xihu District, Hangzhou City, Zhejiang, 310013, China"
     ]
     print(calculate_address_duplicates_penalty(address))
