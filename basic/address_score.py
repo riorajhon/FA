@@ -113,7 +113,7 @@ def check_with_nominatim(address: str) -> Union[float, str, dict]:
         
         # Use the total area for scoring
         total_area = sum(areas)
-        
+        print(total_area)
         # Score based on total area
         if total_area < 100:
             score = 1.0
@@ -160,7 +160,7 @@ def check_with_nominatim(address: str) -> Union[float, str, dict]:
 
 
 if __name__ == "__main__":
-    address = "Farara Plaza, 7, Brades Road, Carr's Bay, Brades, Saint Peter, MSR1210, Montserrat"
+    address = "11, KK 713 Street, Kicukiro District, Kigali City, Rwanda"
     
     result = check_with_nominatim(address)
     

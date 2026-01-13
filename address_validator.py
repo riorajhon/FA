@@ -430,7 +430,15 @@ class AddressValidator:
             
             # Save to JSON if conditions are met
             if should_save_to_json:
-                self.save_address_to_json(address_data)
+                self.save_address_to_json({
+                    'osm_id': osm_id,
+                    'country': nominatim_country,
+                    'city': components['city'],
+                    'street': components['street'],
+                    'score': score,
+                    'status': 1,
+                    'address': display_name  # Add this field to satisfy the existing index
+                })
                 
             if score < 0.9:
                 print(f"{ score } failed with score < 0.9")
@@ -443,7 +451,6 @@ class AddressValidator:
                 'city': components['city'],
                 'street': components['street'],
                 'score': score,
-                'score_1': score_1,  # Add score_1 field
                 'status': 1,
                 'address': display_name  # Add this field to satisfy the existing index
             }
