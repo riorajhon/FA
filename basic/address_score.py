@@ -2,7 +2,7 @@ import requests
 import math
 import re
 from typing import Union
-from address_check import looks_like_address, validate_address_region
+# from address_check import looks_like_address, validate_address_region
 
 def compute_bounding_box_areas_meters(nominatim_results):
     """
@@ -164,8 +164,8 @@ if __name__ == "__main__":
     address = "The Supreme - Burgers & Cheesecakes, 38, Street, Koh Pich, Sangkat Tonle Bassac, Khan Chamkar Mon, Phnom Penh, 120101, Cambodia"
     seed = "Cambodia"
     result = check_with_nominatim(address)
-    looks = looks_like_address(address)
-    region = validate_address_region(address,seed)
+    # looks = looks_like_address(address)
+    # region = validate_address_region(address,seed)
     print(result)
     print(looks)
     print(region)
