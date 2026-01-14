@@ -17,7 +17,8 @@ from pymongo import MongoClient
 import logging
 
 # Import the processing function and URLs
-from osm_processor import process_osm_file
+# from osm_processor import process_osm_file
+from osm_optimized import process_osm_file
 from basic.urls import GEOFABRIK_URLS
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
@@ -99,10 +100,10 @@ class MainOSMProcessor:
         
         logger.info(f"OSM file not found: {file_path}")
         print(f"📁 OSM file not found locally, attempting download...")
-        
+        return
         # Try to download the file
-        downloaded_filename = self.download_osm_file(country_code)
-        return downloaded_filename
+        # downloaded_filename = self.download_osm_file(country_code)
+        # return downloaded_filename
     
     def process_country_osm(self, filename: str, country_code: str, country_name: str) -> bool:
         """Process country using osm_processor.py function"""

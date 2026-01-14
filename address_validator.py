@@ -203,12 +203,31 @@ class AddressValidator:
             logger.error(f"Error saving address to JSON: {e}")
     
     def save_json_file(self):
-        """Save collected addresses to JSON file"""
+        """Save collected addresses to JSON file, combining with existing data"""
         if self.json_addresses:
             try:
+                existing_data = []
+                
+                # Load existing data if file exists
+                if os.path.exists(self.json_filename):
+                    try:
+                        with open(self.json_filename, 'r', encoding='utf-8') as f:
+                            existing_data = json.load(f)
+                        logger.info(f"Loaded {len(existing_data)} existing addresses from {self.json_filename}")
+                    except Exception as e:
+                        logger.warning(f"Could not load existing JSON file: {e}")
+                
+                # Combine existing and new data, avoiding duplicates by osm_id
+                existing_osm_ids = {addr.get('osm_id') for addr in existing_data if addr.get('osm_id')}
+                new_addresses = [addr for addr in self.json_addresses if addr.get('osm_id') not in existing_osm_ids]
+                
+                combined_data = existing_data + new_addresses
+                
+                # Save combined data
                 with open(self.json_filename, 'w', encoding='utf-8') as f:
-                    json.dump(self.json_addresses, f, indent=2, ensure_ascii=False)
-                logger.info(f"Saved {len(self.json_addresses)} addresses to {self.json_filename}")
+                    json.dump(combined_data, f, indent=2, ensure_ascii=False)
+                
+                logger.info(f"Saved {len(combined_data)} total addresses to {self.json_filename} ({len(existing_data)} existing + {len(new_addresses)} new)")
             except Exception as e:
                 logger.error(f"Error saving JSON file: {e}")
     
@@ -436,6 +455,7 @@ class AddressValidator:
                     'city': components['city'],
                     'street': components['street'],
                     'score': score,
+                    'score_1': score_1,
                     'status': 1,
                     'address': display_name  # Add this field to satisfy the existing index
                 })

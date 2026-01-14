@@ -160,7 +160,7 @@ def check_with_nominatim(address: str) -> Union[float, str, dict]:
 
 
 if __name__ == "__main__":
-    address = "11, KK 713 Street, Kicukiro District, Kigali City, Rwanda"
+    address = "611 West Brighton Avenue, Syracuse, 13207, US"
     
     result = check_with_nominatim(address)
     
