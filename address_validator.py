@@ -54,6 +54,10 @@ class AddressValidator:
         self.json_addresses = []
         self.json_filename = "addresses_score1_low.json"
         
+        # Initialize JSON file for empty OSM results
+        self.empty_osm_ids = []
+        self.empty_osm_filename = "empty_osm_results.json"
+        
         self.territories = [
             "Martinique",
             "French Guiana", 
@@ -131,6 +135,13 @@ class AddressValidator:
                     response.raise_for_status()
                     
                     results = response.json()
+                    
+                    # Check if request was successful but results are empty
+                    if response.status_code == 200 and not results:
+                        # Save empty result to JSON
+                        self.save_empty_osm_id(osm_id, osm_type.upper(), osm_number)
+                        return None
+                    
                     return results[0] if results else None
                     
                 except (requests.exceptions.RequestException, requests.exceptions.Timeout) as e:
@@ -202,6 +213,14 @@ class AddressValidator:
         except Exception as e:
             logger.error(f"Error saving address to JSON: {e}")
     
+    def save_empty_osm_id(self, osm_id: str, osm_type: str, osm_number: str):
+        """Save OSM ID with empty result to JSON file"""
+        try:
+            self.empty_osm_ids.append(osm_id)
+            print(f"⚠️  Empty result: {osm_id}")
+        except Exception as e:
+            logger.error(f"Error saving empty OSM ID: {e}")
+    
     def save_json_file(self):
         """Save collected addresses to JSON file, combining with existing data"""
         if self.json_addresses:
@@ -230,6 +249,35 @@ class AddressValidator:
                 logger.info(f"Saved {len(combined_data)} total addresses to {self.json_filename} ({len(existing_data)} existing + {len(new_addresses)} new)")
             except Exception as e:
                 logger.error(f"Error saving JSON file: {e}")
+    
+    def save_empty_osm_file(self):
+        """Save empty OSM IDs to JSON file, combining with existing data"""
+        if self.empty_osm_ids:
+            try:
+                existing_data = []
+                
+                # Load existing data if file exists
+                if os.path.exists(self.empty_osm_filename):
+                    try:
+                        with open(self.empty_osm_filename, 'r', encoding='utf-8') as f:
+                            existing_data = json.load(f)
+                        logger.info(f"Loaded {len(existing_data)} existing empty OSM IDs from {self.empty_osm_filename}")
+                    except Exception as e:
+                        logger.warning(f"Could not load existing empty OSM file: {e}")
+                
+                # Combine existing and new data, avoiding duplicates
+                existing_set = set(existing_data)
+                new_empty_ids = [osm_id for osm_id in self.empty_osm_ids if osm_id not in existing_set]
+                
+                combined_data = existing_data + new_empty_ids
+                
+                # Save combined data
+                with open(self.empty_osm_filename, 'w', encoding='utf-8') as f:
+                    json.dump(combined_data, f, indent=2, ensure_ascii=False)
+                
+                logger.info(f"Saved {len(combined_data)} total empty OSM IDs to {self.empty_osm_filename} ({len(existing_data)} existing + {len(new_empty_ids)} new)")
+            except Exception as e:
+                logger.error(f"Error saving empty OSM file: {e}")
     
     def save_address(self, address_data: Dict, score):
         """Save validated address to database using upsert to handle duplicates"""
@@ -509,9 +557,14 @@ class AddressValidator:
         # Save JSON file with special addresses
         self.save_json_file()
         
+        # Save JSON file with empty OSM results
+        self.save_empty_osm_file()
+        
         print(f"Complete! Addresses saved: {total_saved}")
         if self.json_addresses:
             print(f"Special addresses (score_1=1, score<1) saved to {self.json_filename}: {len(self.json_addresses)}")
+        if self.empty_osm_ids:
+            print(f"Empty OSM results saved to {self.empty_osm_filename}: {len(self.empty_osm_ids)}")
     
     def close(self):
         """Close database connection"""

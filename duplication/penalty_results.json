@@ -1,6 +1,996 @@
 [
   {
+    "country": "Afghanistan",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Albania",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Algeria",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Andorra",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Angola",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Argentina",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Armenia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Aruba",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Australia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Austria",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Azerbaijan",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Bahamas",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Bahrain",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Bangladesh",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Belarus",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Belgium",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Belize",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Benin",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Bhutan",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Bolivia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Bosnia and Herzegovina",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Botswana",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Brazil",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "British Virgin Islands",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Brunei",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Bulgaria",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Burkina Faso",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Burundi",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Cabo Verde",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Cambodia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Cameroon",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Canada",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Cayman Islands",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Central African Republic",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Chad",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Chile",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
     "country": "China",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Colombia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Comoros",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Costa Rica",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Crimea",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Croatia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Cuba",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Curacao",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Cyprus",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Czechia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Democratic Republic of the Congo",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Denmark",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Dominican Republic",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Donetsk",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Ecuador",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Egypt",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "El Salvador",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Equatorial Guinea",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Eritrea",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Estonia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Eswatini",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Ethiopia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Fiji",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Finland",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "France",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "French Guiana",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "French Polynesia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Gabon",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Gambia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Georgia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Germany",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Ghana",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Greece",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Guadeloupe",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Guam",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Guatemala",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Guinea",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Guinea-Bissau",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Guyana",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Haiti",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Honduras",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Hong Kong",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Hungary",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Iceland",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "India",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Indonesia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Iran",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Iraq",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Ireland",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Israel",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Italy",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Ivory Coast",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Jamaica",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Japan",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Jordan",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Kazakhstan",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Kenya",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Kosovo",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Kuwait",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Kyrgyzstan",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Laos",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Latvia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Lebanon",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Lesotho",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Liberia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Libya",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Lithuania",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Luhansk",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Luxembourg",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Macao",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Madagascar",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Malawi",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Malaysia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Maldives",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Mali",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Malta",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Martinique",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Mauritania",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Mauritius",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Mayotte",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Mexico",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Moldova",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Monaco",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Mongolia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Montenegro",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Morocco",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Mozambique",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Myanmar",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Namibia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Nepal",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "New Caledonia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "New Zealand",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Nicaragua",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Niger",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Nigeria",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "North Macedonia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Norway",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Oman",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Pakistan",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Palestinian Territory",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Panama",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Papua New Guinea",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Paraguay",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Peru",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Philippines",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Poland",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Portugal",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Puerto Rico",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Qatar",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Republic of the Congo",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Reunion",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Romania",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Russia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Rwanda",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Saint Lucia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Saint Vincent and the Grenadines",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Saudi Arabia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Senegal",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Serbia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Sierra Leone",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Singapore",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Slovakia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Slovenia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Somalia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "South Africa",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "South Korea",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "South Sudan",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Spain",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Sri Lanka",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Sudan",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Suriname",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Sweden",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Switzerland",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Syria",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Taiwan",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Tajikistan",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Tanzania",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Thailand",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "The Netherlands",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Timor Leste",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Togo",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Trinidad and Tobago",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Tunisia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Turkey",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Turkmenistan",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Turks and Caicos Islands",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "U.S. Virgin Islands",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Uganda",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Ukraine",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "United Arab Emirates",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "United Kingdom",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "United States",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Uruguay",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Uzbekistan",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Venezuela",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Vietnam",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Yemen",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Zambia",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Zimbabwe",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Western Sahara",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Côte d'Ivoire",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Montserrat",
+    "penalty_score": 0.0,
+    "address_count": 15
+  },
+  {
+    "country": "Djibouti",
     "penalty_score": 0.0,
     "address_count": 15
   }
