@@ -53,7 +53,7 @@ def check_with_nominatim(address: str) -> Union[float, str, dict]:
     try:
         url = "https://nominatim.openstreetmap.org/search"
         params = {"q": address, "format": "json"}
-        headers = {"User-Agent": "MIID-Local-Test/1.0"}
+        headers = {"User-Agent": "c"}
         
         response = requests.get(url, params=params, headers=headers, timeout=5)
         results = response.json()
@@ -161,12 +161,12 @@ def check_with_nominatim(address: str) -> Union[float, str, dict]:
 
 
 if __name__ == "__main__":
-    address = "The Supreme - Burgers & Cheesecakes, 38, Street, Koh Pich, Sangkat Tonle Bassac, Khan Chamkar Mon, Phnom Penh, 120101, Cambodia"
-    seed = "Cambodia"
+    address = "69/3, A Shay Gone Street, San Chaung (North) Ward, Sanchaung, Ahlon District, Yangon City, Yangon, 22222, Myanmar"
+    seed = "Bhutan"
     result = check_with_nominatim(address)
     # looks = looks_like_address(address)
     # region = validate_address_region(address,seed)
     print(result)
-    print(looks)
-    print(region)
+    # print(looks)
+    # print(region)
     
