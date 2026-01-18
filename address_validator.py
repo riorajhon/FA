@@ -508,8 +508,8 @@ class AddressValidator:
                     'address': display_name  # Add this field to satisfy the existing index
                 })
                 
-            if score < 0.9:
-                print(f"{ score } failed with score < 0.9")
+            if score < 1:
+                print(f"{ score } failed with score < 1.0")
                 continue
 
             # Save address
