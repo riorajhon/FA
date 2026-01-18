@@ -30,7 +30,7 @@ class MainAddressProcessor:
     def load_countries(self):
         """Load countries from country.json"""
         try:
-            with open('basic/country.json', 'r', encoding='utf-8') as f:
+            with open('final/country_names_only.json', 'r', encoding='utf-8') as f:
                 countries = json.load(f)
             logger.info(f"Loaded {len(countries)} countries from country.json")
             return countries
@@ -82,7 +82,7 @@ class MainAddressProcessor:
                     stats['no_batches'] += 1
                 else:
                     # Process country with limit 2
-                    self.validator.process_country(country_name, limit=2)
+                    self.validator.process_country(country_name, limit=1)
                     stats['successful'] += 1
                     print(f"✅ Completed: {country_name}")
                 

@@ -15,6 +15,10 @@ from typing import Optional
 from pymongo import MongoClient, InsertOne
 import osmium
 import logging
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -53,14 +57,18 @@ class OSMAddressProcessor(osmium.SimpleHandler):
         #     return False 
         if 'name' not in t.tags:
             return False
-        if 'leisure' not in t.tags:
+        # if 'leisure' not in t.tags:
+        #     return False
+        if 'building' not in t.tags:
+            return False
+        if 'addr:street' not in t.tags:
             return False
         
         return True    
-    def node(self, n):
-        if self.check(n):
-            self._add_address(f'N{n.id}')
-        self._update_progress()
+    # def node(self, n):
+    #     if self.check(n):
+    #         self._add_address(f'N{n.id}')
+    #     self._update_progress()
             
     def way(self, w):
         if self.check(w):
@@ -200,8 +208,11 @@ def find_osm_file(filename):
     file_path = os.path.join('osm_data', filename)
     return file_path if os.path.exists(file_path) else None
 
-def try_mongodb_connection(mongodb_uri):
+def try_mongodb_connection(mongodb_uri=None):
     """Test MongoDB connection"""
+    if mongodb_uri is None:
+        mongodb_uri = os.getenv('MONGODB_URI', 'mongodb://admin:fjkfjrj!20020415@localhost:27017/?authSource=admin')
+    
     try:
         client = MongoClient(mongodb_uri, serverSelectionTimeoutMS=5000)
         client.admin.command('ping')
@@ -215,8 +226,10 @@ def try_mongodb_connection(mongodb_uri):
         logger.warning(f"MongoDB connection failed: {e}")
         return None, None
 
-def process_osm_file(filename, country_code, country_name, force_json=False, mongodb_uri="mongodb://admin:fjkfjrj!20020415@localhost:27017/?authSource=admin"):
+def process_osm_file(filename, country_code, country_name, force_json=False, mongodb_uri=None):
     """Process OSM file with simple progress tracking and fallback storage"""
+    if mongodb_uri is None:
+        mongodb_uri = os.getenv('MONGODB_URI', 'mongodb://admin:fjkfjrj!20020415@localhost:27017/?authSource=admin')
     file_path = find_osm_file(filename)
     if not file_path:
         raise FileNotFoundError(f"File '{filename}' not found in osm_data/")
@@ -231,7 +244,7 @@ def process_osm_file(filename, country_code, country_name, force_json=False, mon
         use_file_storage = True
         print("Forced JSON output - saving to output/addresses.jsonl")
     else:
-        client, collection = try_mongodb_connection(mongodb_uri)
+        client, collection = try_mongodb_connection()
         use_file_storage = collection is None
         
         if use_file_storage:

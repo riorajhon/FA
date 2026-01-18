@@ -5,7 +5,7 @@ __pycache__
 eh-latest.osm.pbf
 .env
 split
-final
+final/address_dictionary.json
 output
 doll
 delete
