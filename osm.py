@@ -43,14 +43,19 @@ class OSMAddressProcessor(osmium.SimpleHandler):
     def check(self, t):
         if 'addr:housenumber' in t.tags:
             return False
-        if 'building' not in t.tags:
-            return False
-        # if 'addr:place' not in t.tags:
+        # if 'building' not in t.tags:
         #     return False
-        if 'addr:street' not in t.tags:
-            return False
+        # # if 'addr:place' not in t.tags:
+        # #     return False
+        # if 'addr:street' not in t.tags:
+        #     return False
         # if 'addr:city' not in t.tags:
         #     return False 
+        if 'name' not in t.tags:
+            return False
+        if 'leisure' not in t.tags:
+            return False
+        
         return True    
     def node(self, n):
         if self.check(n):
@@ -62,10 +67,10 @@ class OSMAddressProcessor(osmium.SimpleHandler):
             self._add_address(f'W{w.id}')
         self._update_progress()
             
-    def relation(self, r):
-        if self.check(r):
-            self._add_address(f'R{r.id}')
-        self._update_progress()
+    # def relation(self, r):
+    #     if self.check(r):
+    #         self._add_address(f'R{r.id}')
+    #     self._update_progress()
     
     def _update_progress(self):
         """Update file processing progress"""
@@ -200,7 +205,7 @@ def try_mongodb_connection(mongodb_uri):
     try:
         client = MongoClient(mongodb_uri, serverSelectionTimeoutMS=5000)
         client.admin.command('ping')
-        collection = client.osm_addresses.address_batches
+        collection = client.osm_addresses.address_batches1
         # Test write permission
         test_doc = {'test': True}
         result = collection.insert_one(test_doc)
