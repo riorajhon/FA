@@ -106,5 +106,5 @@ def main():
             print("\n\nGoodbye!")
 
 if __name__ == "__main__":
-    address = "Sectorul de Poliție nr. 2, 4, Vasili Dokuceaev Street, Dokuceaev, Centru Sector, Chișinău, Chișinău Municipality, MD-2028, Moldova"
+    address = "31, Street 103, Tall Al Zaatar, Dekwaneh, Matn District, Mount Lebanon Governorate, 2703, Lebanon'"
     print(extract_first_section(address))

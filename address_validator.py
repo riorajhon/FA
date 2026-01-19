@@ -493,7 +493,7 @@ class AddressValidator:
             score = check_with_nominatim(display_name)
             
             # Check if we should save to JSON (score_1 = 1 AND score < 1)
-            should_save_to_json = (score_1 == 1.0 and score < 1.0)
+            should_save_to_json = (score_1 == 1.0 and score == 0)
             
             # Save to JSON if conditions are met
             if should_save_to_json:
@@ -508,8 +508,8 @@ class AddressValidator:
                     'address': display_name  # Add this field to satisfy the existing index
                 })
                 
-            if score < 1:
-                print(f"{ score } failed with score < 1.0")
+            if score < 0.9:
+                print(f"{ score } failed with score < 0.9")
                 continue
 
             # Save address
