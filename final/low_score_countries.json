@@ -1,7 +1,7 @@
 [
   {
     "country": "Angola",
-    "count": 1
+    "count": 4
   },
   {
     "country": "Bahrain",
@@ -25,7 +25,7 @@
   },
   {
     "country": "Botswana",
-    "count": 3
+    "count": 5
   },
   {
     "country": "Brazil",
@@ -53,7 +53,7 @@
   },
   {
     "country": "Cambodia",
-    "count": 7
+    "count": 9
   },
   {
     "country": "Cameroon",
@@ -69,7 +69,7 @@
   },
   {
     "country": "Chad",
-    "count": 3
+    "count": 4
   },
   {
     "country": "Colombia",
@@ -81,7 +81,7 @@
   },
   {
     "country": "Crimea",
-    "count": 3
+    "count": 4
   },
   {
     "country": "Cuba",
@@ -89,7 +89,7 @@
   },
   {
     "country": "Curacao",
-    "count": 10
+    "count": 13
   },
   {
     "country": "Cyprus",
@@ -101,11 +101,11 @@
   },
   {
     "country": "Djibouti",
-    "count": 0
+    "count": 5
   },
   {
     "country": "Donetsk",
-    "count": 9
+    "count": 14
   },
   {
     "country": "Ecuador",
@@ -137,7 +137,7 @@
   },
   {
     "country": "Gabon",
-    "count": 0
+    "count": 6
   },
   {
     "country": "Gambia",
@@ -205,11 +205,15 @@
   },
   {
     "country": "Laos",
-    "count": 3
+    "count": 2
   },
   {
     "country": "Lebanon",
     "count": 10
+  },
+  {
+    "country": "Lesotho",
+    "count": 13
   },
   {
     "country": "Liberia",
@@ -225,7 +229,7 @@
   },
   {
     "country": "Malawi",
-    "count": 6
+    "count": 7
   },
   {
     "country": "Malaysia",
@@ -269,7 +273,7 @@
   },
   {
     "country": "Niger",
-    "count": 2
+    "count": 3
   },
   {
     "country": "Nigeria",
@@ -289,7 +293,7 @@
   },
   {
     "country": "Palestinian Territory",
-    "count": 10
+    "count": 11
   },
   {
     "country": "Papua New Guinea",
@@ -321,7 +325,7 @@
   },
   {
     "country": "Saint Lucia",
-    "count": 0
+    "count": 1
   },
   {
     "country": "Saint Vincent and the Grenadines",
@@ -353,7 +357,7 @@
   },
   {
     "country": "Suriname",
-    "count": 3
+    "count": 7
   },
   {
     "country": "Taiwan",
@@ -369,7 +373,7 @@
   },
   {
     "country": "Togo",
-    "count": 3
+    "count": 6
   },
   {
     "country": "Trinidad and Tobago",
@@ -385,7 +389,7 @@
   },
   {
     "country": "Uganda",
-    "count": 4
+    "count": 10
   },
   {
     "country": "United Arab Emirates",

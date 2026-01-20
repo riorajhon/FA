@@ -45,7 +45,7 @@ class AddressValidator:
         
         self.client = MongoClient(mongodb_uri)
         self.db = self.client.osm_addresses
-        self.batches_collection = self.db.address_batches
+        self.batches_collection = self.db.address_batches1
         self.addresses_collection = self.db.validated_addresses
         self.nominatim_base_url = "https://nominatim.openstreetmap.org"
         self.session = requests.Session()
