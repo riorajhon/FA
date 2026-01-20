@@ -82,7 +82,7 @@ class MainAddressProcessor:
                     stats['no_batches'] += 1
                 else:
                     # Process country with limit 2
-                    self.validator.process_country(country_name, limit=1)
+                    self.validator.process_country(country_name, limit=3)
                     stats['successful'] += 1
                     print(f"✅ Completed: {country_name}")
                 

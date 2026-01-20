@@ -57,8 +57,8 @@ class OSMAddressProcessor(osmium.SimpleHandler):
         #     return False 
         if 'name' not in t.tags:
             return False
-        # if 'leisure' not in t.tags:
-        #     return False
+        # # if 'leisure' not in t.tags:
+        # #     return False
         if 'building' not in t.tags:
             return False
         # if 'addr:street' not in t.tags:
