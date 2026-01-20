@@ -18,6 +18,10 @@ from pymongo import MongoClient
 import logging
 from dotenv import load_dotenv
 
+# Import first_section extractor
+sys.path.append(os.path.join(os.path.dirname(__file__), 'duplication'))
+from first_section import extract_first_section
+
 # Load environment variables
 load_dotenv()
 
@@ -452,6 +456,8 @@ class AddressValidator:
                     display_name = display_name.replace('East Timor', 'Timor Leste')
                 case "Maldives":
                     display_name = display_name.replace('é', 'e')
+                case "Montserrat":
+                    display_name = display_name.replace("MSR", '')
                 # case "Montserrat":
                 #     postcode = result.get('address', {}).get('postcode', '')
                 #     display_name = display_name.replace(postcode, '')
@@ -520,7 +526,8 @@ class AddressValidator:
                 'street': components['street'],
                 'score': score,
                 'status': 1,
-                'address': display_name  # Add this field to satisfy the existing index
+                'address': display_name,  # Add this field to satisfy the existing index
+                'first_section': extract_first_section(display_name)  # Add first_section field
             }
             
             self.save_address(address_data, score)

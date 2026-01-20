@@ -17,7 +17,7 @@
   },
   {
     "country": "Bolivia",
-    "count": 0
+    "count": 2
   },
   {
     "country": "Bonaire, Saint Eustatius and Saba",
@@ -33,7 +33,7 @@
   },
   {
     "country": "British Virgin Islands",
-    "count": 2
+    "count": 3
   },
   {
     "country": "Brunei",
@@ -41,7 +41,7 @@
   },
   {
     "country": "Burkina Faso",
-    "count": 8
+    "count": 9
   },
   {
     "country": "Burundi",
@@ -57,7 +57,7 @@
   },
   {
     "country": "Cameroon",
-    "count": 9
+    "count": 11
   },
   {
     "country": "Cayman Islands",
@@ -173,7 +173,7 @@
   },
   {
     "country": "Haiti",
-    "count": 0
+    "count": 5
   },
   {
     "country": "Hong Kong",
@@ -205,7 +205,7 @@
   },
   {
     "country": "Laos",
-    "count": 2
+    "count": 3
   },
   {
     "country": "Lebanon",
@@ -257,11 +257,11 @@
   },
   {
     "country": "Montserrat",
-    "count": 0
+    "count": 5
   },
   {
     "country": "Myanmar",
-    "count": 0
+    "count": 1
   },
   {
     "country": "New Caledonia",
@@ -273,7 +273,7 @@
   },
   {
     "country": "Nigeria",
-    "count": 0
+    "count": 2
   },
   {
     "country": "North Korea",
@@ -396,12 +396,8 @@
     "count": 0
   },
   {
-    "country": "Venezuela",
-    "count": 7
-  },
-  {
     "country": "Vietnam",
-    "count": 0
+    "count": 7
   },
   {
     "country": "Western Sahara",
