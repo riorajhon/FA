@@ -18,7 +18,7 @@ import logging
 
 # Import the processing function and URLs
 # from osm_processor import process_osm_file
-from osm_optimized import process_osm_file
+from osm import process_osm_file
 from basic.urls import GEOFABRIK_URLS
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
