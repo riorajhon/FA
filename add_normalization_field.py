@@ -63,7 +63,7 @@ class NormalizationFieldAdder:
     
     def process_addresses_batch(self, batch_size: int = 1000, limit: Optional[int] = None, dry_run: bool = False):
         """
-        Process addresses in batches to add normalization field
+        Process addresses in batches to add normalization field using skip/limit
         
         Args:
             batch_size: Number of addresses to process in each batch
@@ -74,28 +74,28 @@ class NormalizationFieldAdder:
         # Query for addresses without normalization field
         query = {"normalization": {"$exists": False}}
         
-        # Apply limit if specified
-        cursor = self.addresses_collection.find(query, {"_id": 1, "address": 1})
-        if limit:
-            cursor = cursor.limit(limit)
+        # Determine total to process
+        total_to_process = limit if limit else self.stats['addresses_without_normalization']
         
-        # Process in batches
-        batch = []
+        # Process in batches using skip/limit
         batch_count = 0
+        skip = 0
         
-        for doc in cursor:
-            batch.append(doc)
-            
-            # Process batch when it reaches batch_size
-            if len(batch) >= batch_size:
-                batch_count += 1
-                self.process_single_batch(batch, batch_count, dry_run)
-                batch = []
-        
-        # Process remaining addresses in the last batch
-        if batch:
+        while skip < total_to_process:
             batch_count += 1
+            current_batch_size = min(batch_size, total_to_process - skip)
+            
+            # Get batch using skip/limit
+            batch = list(self.addresses_collection.find(
+                query, 
+                {"_id": 1, "address": 1}
+            ).skip(skip).limit(current_batch_size))
+            
+            if not batch:
+                break
+                
             self.process_single_batch(batch, batch_count, dry_run)
+            skip += current_batch_size
         
         # Print final statistics
         self.print_final_stats(dry_run)
