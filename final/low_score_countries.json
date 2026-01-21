@@ -8,16 +8,12 @@
     "count": 1
   },
   {
-    "country": "Bangladesh",
-    "count": 1
-  },
-  {
     "country": "Benin",
-    "count": 2
+    "count": 9
   },
   {
     "country": "Bolivia",
-    "count": 2
+    "count": 6
   },
   {
     "country": "Bonaire, Saint Eustatius and Saba",
@@ -25,110 +21,74 @@
   },
   {
     "country": "Botswana",
-    "count": 5
+    "count": 7
   },
   {
     "country": "Brazil",
-    "count": 0
-  },
-  {
-    "country": "British Virgin Islands",
-    "count": 3
+    "count": 4
   },
   {
     "country": "Brunei",
-    "count": 1
-  },
-  {
-    "country": "Burkina Faso",
-    "count": 9
-  },
-  {
-    "country": "Burundi",
-    "count": 4
-  },
-  {
-    "country": "Cabo Verde",
-    "count": 0
-  },
-  {
-    "country": "Cambodia",
-    "count": 9
-  },
-  {
-    "country": "Cameroon",
-    "count": 11
-  },
-  {
-    "country": "Cayman Islands",
     "count": 3
   },
   {
-    "country": "Central African Republic",
-    "count": 1
+    "country": "Burundi",
+    "count": 12
   },
   {
-    "country": "Chad",
-    "count": 4
+    "country": "Cabo Verde",
+    "count": 10
+  },
+  {
+    "country": "Cambodia",
+    "count": 11
+  },
+  {
+    "country": "Cameroon",
+    "count": 13
+  },
+  {
+    "country": "Cayman Islands",
+    "count": 10
   },
   {
     "country": "Colombia",
-    "count": 0
+    "count": 5
   },
   {
     "country": "Comoros",
     "count": 1
   },
   {
-    "country": "Crimea",
-    "count": 4
-  },
-  {
     "country": "Cuba",
-    "count": 9
-  },
-  {
-    "country": "Curacao",
-    "count": 13
+    "count": 11
   },
   {
     "country": "Cyprus",
-    "count": 0
+    "count": 6
   },
   {
     "country": "Democratic Republic of the Congo",
-    "count": 0
+    "count": 6
   },
   {
     "country": "Djibouti",
     "count": 5
   },
   {
-    "country": "Donetsk",
-    "count": 14
-  },
-  {
     "country": "Ecuador",
-    "count": 0
-  },
-  {
-    "country": "Egypt",
-    "count": 0
-  },
-  {
-    "country": "Equatorial Guinea",
-    "count": 0
-  },
-  {
-    "country": "Eritrea",
-    "count": 0
-  },
-  {
-    "country": "Eswatini",
     "count": 3
   },
   {
-    "country": "Ethiopia",
+    "country": "Egypt",
+    "count": 4
+  },
+  {
+    "country": "Equatorial Guinea",
+    "count": 1
+  },
+  {
+    "country": "Eritrea",
     "count": 0
   },
   {
@@ -137,7 +97,7 @@
   },
   {
     "country": "Gabon",
-    "count": 6
+    "count": 11
   },
   {
     "country": "Gambia",
@@ -145,35 +105,19 @@
   },
   {
     "country": "Ghana",
-    "count": 0
-  },
-  {
-    "country": "Guadeloupe",
-    "count": 0
+    "count": 1
   },
   {
     "country": "Guam",
-    "count": 6
+    "count": 9
   },
   {
     "country": "Guatemala",
-    "count": 0
-  },
-  {
-    "country": "Guinea",
-    "count": 0
+    "count": 5
   },
   {
     "country": "Guinea-Bissau",
     "count": 0
-  },
-  {
-    "country": "Guyana",
-    "count": 12
-  },
-  {
-    "country": "Haiti",
-    "count": 5
   },
   {
     "country": "Hong Kong",
@@ -181,23 +125,19 @@
   },
   {
     "country": "India",
-    "count": 0
+    "count": 2
   },
   {
     "country": "Indonesia",
-    "count": 0
+    "count": 1
   },
   {
     "country": "Israel",
-    "count": 0
+    "count": 2
   },
   {
     "country": "Ivory Coast",
-    "count": 0
-  },
-  {
-    "country": "Jordan",
-    "count": 0
+    "count": 7
   },
   {
     "country": "Kuwait",
@@ -205,19 +145,15 @@
   },
   {
     "country": "Laos",
-    "count": 2
+    "count": 6
   },
   {
     "country": "Lebanon",
     "count": 10
   },
   {
-    "country": "Lesotho",
-    "count": 13
-  },
-  {
     "country": "Liberia",
-    "count": 0
+    "count": 4
   },
   {
     "country": "Libya",
@@ -225,39 +161,31 @@
   },
   {
     "country": "Macao",
-    "count": 0
-  },
-  {
-    "country": "Malawi",
-    "count": 7
-  },
-  {
-    "country": "Malaysia",
-    "count": 0
-  },
-  {
-    "country": "Mali",
     "count": 3
   },
   {
-    "country": "Martinique",
-    "count": 0
+    "country": "Malawi",
+    "count": 11
+  },
+  {
+    "country": "Malaysia",
+    "count": 2
   },
   {
     "country": "Mauritania",
-    "count": 0
+    "count": 1
   },
   {
     "country": "Mauritius",
-    "count": 5
+    "count": 8
   },
   {
     "country": "Mayotte",
-    "count": 0
+    "count": 13
   },
   {
     "country": "Mexico",
-    "count": 0
+    "count": 3
   },
   {
     "country": "Montserrat",
@@ -265,15 +193,11 @@
   },
   {
     "country": "Myanmar",
-    "count": 1
+    "count": 14
   },
   {
     "country": "New Caledonia",
-    "count": 0
-  },
-  {
-    "country": "Niger",
-    "count": 3
+    "count": 4
   },
   {
     "country": "Nigeria",
@@ -289,7 +213,7 @@
   },
   {
     "country": "Pakistan",
-    "count": 0
+    "count": 2
   },
   {
     "country": "Palestinian Territory",
@@ -305,19 +229,15 @@
   },
   {
     "country": "Peru",
-    "count": 0
+    "count": 4
   },
   {
     "country": "Philippines",
-    "count": 0
+    "count": 3
   },
   {
     "country": "Qatar",
     "count": 0
-  },
-  {
-    "country": "Republic of the Congo",
-    "count": 7
   },
   {
     "country": "Reunion",

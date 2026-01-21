@@ -22,6 +22,10 @@ from dotenv import load_dotenv
 sys.path.append(os.path.join(os.path.dirname(__file__), 'duplication'))
 from first_section import extract_first_section
 
+# Import address normalization
+sys.path.append(os.path.join(os.path.dirname(__file__), 'basic'))
+from address_normalization import normalize_address_for_deduplication
+
 # Load environment variables
 load_dotenv()
 
@@ -527,7 +531,8 @@ class AddressValidator:
                 'score': score,
                 'status': 1,
                 'address': display_name,  # Add this field to satisfy the existing index
-                'first_section': extract_first_section(display_name)  # Add first_section field
+                'first_section': extract_first_section(display_name),  # Add first_section field
+                'normalization': normalize_address_for_deduplication(display_name)  # Add normalization field
             }
             
             self.save_address(address_data, score)

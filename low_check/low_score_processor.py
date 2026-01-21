@@ -33,6 +33,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'duplication'))
 from address_check import looks_like_address, validate_address_region
 from address_score import check_with_nominatim
 from first_section import extract_first_section
+from address_normalization import normalize_address_for_deduplication
 
 # Load environment variables
 load_dotenv()
@@ -367,7 +368,8 @@ class LowScoreProcessor:
                 'score': nominatim_score,
                 'status': 1,
                 'address': final_display_name,
-                'first_section': extract_first_section(final_display_name)
+                'first_section': extract_first_section(final_display_name),
+                'normalization': normalize_address_for_deduplication(display_name)
             }
             
             # Update existing document or insert new one
