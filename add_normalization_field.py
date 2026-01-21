@@ -196,7 +196,7 @@ def main():
         
         # Process addresses
         processor.process_addresses_batch(
-            batch_size=1000,
+            batch_size=100,
             limit=limit,
             dry_run=dry_run
         )
