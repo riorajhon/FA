@@ -36,25 +36,33 @@ class CountryScoreChecker:
             return json.load(f)
     
     def get_high_score_count(self, country_name: str) -> int:
-        """Get count of addresses with score >= 0.9 for a country"""
-        query = {"country": country_name, "score": {"$gte": 1}}
-        count = self.collection.count_documents(query)
-        return count
+        """Get count of unique normalizations for addresses with score >= 1 for a country"""
+        pipeline = [
+            {"$match": {"country": country_name, "score": {"$gte": 1}}},
+            {"$group": {
+                "_id": "$normalization"
+            }},
+            {"$count": "unique_count"}
+        ]
+        
+        result = list(self.collection.aggregate(pipeline))
+        return result[0]["unique_count"] if result else 0
     
     def find_countries_with_low_score_count(self):
-        """Find countries with fewer than 15 addresses with score >= 0.9"""
+        """Find countries with fewer than 15 unique normalizations with score >= 1"""
         countries = self.load_country_names()
         low_count_countries = []
         
         for country in countries:
             count = self.get_high_score_count(country)
+            
             if count < 15:
                 country_data = {
                     "country": country,
-                    "count": count
+                    "unique_normalization_count": count
                 }
                 low_count_countries.append(country_data)
-                print(f"{country}: {count} addresses with score >= 0.9")
+                print(f"{country}: {count} unique normalizations (score >= 1)")
         
         return low_count_countries
     
@@ -79,7 +87,7 @@ def main():
         low_count_countries = checker.find_countries_with_low_score_count()
         checker.save_results(low_count_countries)
         
-        print(f"\nFound {len(low_count_countries)} countries with fewer than 15 addresses with score >= 0.9")
+        print(f"\nFound {len(low_count_countries)} countries with fewer than 15 unique normalizations with score >= 1")
         
     except Exception as e:
         print(f"Error: {e}")
