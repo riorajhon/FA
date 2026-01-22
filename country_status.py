@@ -28,7 +28,7 @@ class CountryStatusProcessor:
     def load_country_names(self) -> List[str]:
         """Load country names from country.json"""
         try:
-            with open('final/country_names_only.json', 'r', encoding='utf-8') as f:
+            with open('basic/country1.json', 'r', encoding='utf-8') as f:
                 countries = json.load(f)
             logger.info(f"Loaded {len(countries)} countries from country.json")
             return countries

@@ -102,8 +102,8 @@ class MainOSMProcessor:
         print(f"📁 OSM file not found locally, attempting download...")
         return
         # Try to download the file
-        # downloaded_filename = self.download_osm_file(country_code)
-        # return downloaded_filename
+        downloaded_filename = self.download_osm_file(country_code)
+        return downloaded_filename
     
     def process_country_osm(self, filename: str, country_code: str, country_name: str) -> bool:
         """Process country using osm_processor.py function"""
