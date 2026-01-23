@@ -1,7 +1,7 @@
 [
   {
     "country": "Angola",
-    "unique_normalization_count": 5
+    "unique_normalization_count": 8
   },
   {
     "country": "Bahamas",
@@ -13,7 +13,7 @@
   },
   {
     "country": "Bolivia",
-    "unique_normalization_count": 6
+    "unique_normalization_count": 11
   },
   {
     "country": "Bonaire, Saint Eustatius and Saba",
@@ -21,19 +21,11 @@
   },
   {
     "country": "Botswana",
-    "unique_normalization_count": 7
-  },
-  {
-    "country": "Brazil",
-    "unique_normalization_count": 8
+    "unique_normalization_count": 9
   },
   {
     "country": "Brunei",
-    "unique_normalization_count": 4
-  },
-  {
-    "country": "Cambodia",
-    "unique_normalization_count": 12
+    "unique_normalization_count": 10
   },
   {
     "country": "Canada",
@@ -41,35 +33,23 @@
   },
   {
     "country": "Cayman Islands",
-    "unique_normalization_count": 12
+    "unique_normalization_count": 13
   },
   {
     "country": "Colombia",
-    "unique_normalization_count": 7
+    "unique_normalization_count": 12
   },
   {
     "country": "Comoros",
     "unique_normalization_count": 2
   },
   {
-    "country": "Cyprus",
-    "unique_normalization_count": 14
-  },
-  {
-    "country": "Democratic Republic of the Congo",
-    "unique_normalization_count": 14
-  },
-  {
     "country": "Djibouti",
-    "unique_normalization_count": 5
+    "unique_normalization_count": 6
   },
   {
     "country": "Ecuador",
-    "unique_normalization_count": 7
-  },
-  {
-    "country": "Egypt",
-    "unique_normalization_count": 5
+    "unique_normalization_count": 14
   },
   {
     "country": "Equatorial Guinea",
@@ -85,7 +65,7 @@
   },
   {
     "country": "Ethiopia",
-    "unique_normalization_count": 3
+    "unique_normalization_count": 8
   },
   {
     "country": "Fiji",
@@ -93,7 +73,7 @@
   },
   {
     "country": "French Polynesia",
-    "unique_normalization_count": 2
+    "unique_normalization_count": 9
   },
   {
     "country": "Gambia",
@@ -101,15 +81,11 @@
   },
   {
     "country": "Ghana",
-    "unique_normalization_count": 1
+    "unique_normalization_count": 3
   },
   {
     "country": "Guam",
     "unique_normalization_count": 9
-  },
-  {
-    "country": "Guatemala",
-    "unique_normalization_count": 10
   },
   {
     "country": "Guinea-Bissau",
@@ -124,12 +100,8 @@
     "unique_normalization_count": 0
   },
   {
-    "country": "India",
-    "unique_normalization_count": 8
-  },
-  {
     "country": "Indonesia",
-    "unique_normalization_count": 3
+    "unique_normalization_count": 11
   },
   {
     "country": "Israel",
@@ -137,43 +109,27 @@
   },
   {
     "country": "Ivory Coast",
-    "unique_normalization_count": 7
+    "unique_normalization_count": 13
   },
   {
     "country": "Kuwait",
     "unique_normalization_count": 0
   },
   {
-    "country": "Laos",
-    "unique_normalization_count": 7
-  },
-  {
     "country": "Lebanon",
-    "unique_normalization_count": 5
-  },
-  {
-    "country": "Liberia",
-    "unique_normalization_count": 10
+    "unique_normalization_count": 11
   },
   {
     "country": "Libya",
     "unique_normalization_count": 0
   },
   {
-    "country": "Macao",
-    "unique_normalization_count": 6
-  },
-  {
     "country": "Malaysia",
-    "unique_normalization_count": 3
+    "unique_normalization_count": 4
   },
   {
     "country": "Mauritania",
     "unique_normalization_count": 1
-  },
-  {
-    "country": "Mauritius",
-    "unique_normalization_count": 12
   },
   {
     "country": "Mayotte",
@@ -181,27 +137,15 @@
   },
   {
     "country": "Mexico",
-    "unique_normalization_count": 3
+    "unique_normalization_count": 7
   },
   {
     "country": "Montserrat",
     "unique_normalization_count": 5
   },
   {
-    "country": "Mozambique",
-    "unique_normalization_count": 14
-  },
-  {
-    "country": "Myanmar",
-    "unique_normalization_count": 9
-  },
-  {
-    "country": "New Caledonia",
-    "unique_normalization_count": 4
-  },
-  {
     "country": "Nigeria",
-    "unique_normalization_count": 2
+    "unique_normalization_count": 5
   },
   {
     "country": "North Korea",
@@ -213,7 +157,7 @@
   },
   {
     "country": "Pakistan",
-    "unique_normalization_count": 2
+    "unique_normalization_count": 6
   },
   {
     "country": "Palestinian Territory",
@@ -229,15 +173,15 @@
   },
   {
     "country": "Paraguay",
-    "unique_normalization_count": 11
+    "unique_normalization_count": 14
   },
   {
     "country": "Peru",
-    "unique_normalization_count": 4
+    "unique_normalization_count": 12
   },
   {
     "country": "Philippines",
-    "unique_normalization_count": 3
+    "unique_normalization_count": 5
   },
   {
     "country": "Puerto Rico",
@@ -248,24 +192,16 @@
     "unique_normalization_count": 0
   },
   {
-    "country": "Reunion",
-    "unique_normalization_count": 14
-  },
-  {
     "country": "Rwanda",
-    "unique_normalization_count": 8
-  },
-  {
-    "country": "Saint Lucia",
-    "unique_normalization_count": 4
+    "unique_normalization_count": 13
   },
   {
     "country": "Saint Vincent and the Grenadines",
-    "unique_normalization_count": 0
+    "unique_normalization_count": 2
   },
   {
     "country": "Saudi Arabia",
-    "unique_normalization_count": 1
+    "unique_normalization_count": 2
   },
   {
     "country": "Senegal",
@@ -273,23 +209,19 @@
   },
   {
     "country": "Singapore",
-    "unique_normalization_count": 0
+    "unique_normalization_count": 3
   },
   {
     "country": "Somalia",
-    "unique_normalization_count": 2
+    "unique_normalization_count": 3
   },
   {
     "country": "South Sudan",
-    "unique_normalization_count": 2
-  },
-  {
-    "country": "Sri Lanka",
-    "unique_normalization_count": 12
+    "unique_normalization_count": 6
   },
   {
     "country": "Sudan",
-    "unique_normalization_count": 7
+    "unique_normalization_count": 8
   },
   {
     "country": "Suriname",
@@ -297,19 +229,19 @@
   },
   {
     "country": "Taiwan",
-    "unique_normalization_count": 1
+    "unique_normalization_count": 7
   },
   {
     "country": "Thailand",
-    "unique_normalization_count": 0
+    "unique_normalization_count": 7
   },
   {
     "country": "Timor Leste",
-    "unique_normalization_count": 8
+    "unique_normalization_count": 9
   },
   {
     "country": "Trinidad and Tobago",
-    "unique_normalization_count": 1
+    "unique_normalization_count": 10
   },
   {
     "country": "Turks and Caicos Islands",
@@ -320,16 +252,12 @@
     "unique_normalization_count": 0
   },
   {
-    "country": "Uruguay",
-    "unique_normalization_count": 2
-  },
-  {
     "country": "Venezuela",
     "unique_normalization_count": 14
   },
   {
     "country": "Vietnam",
-    "unique_normalization_count": 9
+    "unique_normalization_count": 14
   },
   {
     "country": "Western Sahara",
@@ -337,10 +265,6 @@
   },
   {
     "country": "Yemen",
-    "unique_normalization_count": 2
-  },
-  {
-    "country": "Zimbabwe",
-    "unique_normalization_count": 8
+    "unique_normalization_count": 3
   }
 ]

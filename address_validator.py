@@ -474,7 +474,7 @@ class AddressValidator:
                 # display_name = self.trim_address_to_territory(display_name, country_name)
                 # display_name, nominatim_country = self.apply_special_rules(display_name, country_name)
                 
-            nominatim_country = country_name    
+            nominatim_country = result.get('address', {}).get('country', country_name)    
             # Process territories display names
             # display_name = self.process_territory_display_name(country_name, nominatim_country, display_name)
                 
