@@ -42,14 +42,15 @@ class OSMAddressProcessor(osmium.SimpleHandler):
         self.last_progress_report = 0
         
     def node(self, n):
-        if 'addr:housenumber' in n.tags:
-            self._add_address(f'N{n.id}')
-            print("____________")
-            for i,v in n.tags:
-                print(i,v)
-            print("____________")
+        # if 'addr:housenumber' in n.tags:
+        #     self._add_address(f'N{n.id}')
+        #     print("____________")
+        #     for i,v in n.tags:
+        #         print(i,v)
+        #     print("____________")
                 
-        self._update_progress()
+        # self._update_progress()
+        print("--------")
             
     # def way(self, w):
     #     if 'addr:housenumber' in w.tags:
